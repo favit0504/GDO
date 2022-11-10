@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="gdo-ejb">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="gdo-ejb.jar" deploy-path="/" handle="module:/resource/gdo-ejb_EJB/gdo-ejb_EJB">
+            <dependent-object>Module_1668074257249</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gdo-web-services.war" deploy-path="/" handle="module:/resource/gdo-web-services/gdo-web-services">
+            <dependent-object>Module_1668074257275</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

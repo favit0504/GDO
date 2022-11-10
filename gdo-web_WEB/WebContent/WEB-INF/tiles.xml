@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	
+	<definition name="baseLayout" template="jsp/baseLayout.jsp">
+      	<put-attribute name="header" value="/jsp/tiles/header.jsp" />
+      	<!-- TODO: per qualche motivo non mi funzionava , mi dava  Attribute 'messages2' not found. 
+      	L'ho incluso con jsp:include, per ora
+      	<put-attribute name="messages2" value="/jsp/tiles/messages.jsp" />
+      	 -->      	
+    </definition>
+  	
+ 	<definition name="home" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale"/>   
+   		<put-attribute name="content" value="/jsp/temp_includes/homepage.jsp" />
+  	</definition>
+  	
+  	<definition name="errore" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Errore"/>   
+   		<put-attribute name="content" value="/jsp/tiles/errorBody.jsp" />
+  	</definition>
+  	
+  	<definition name="errore-no-menu" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Errore"/>   
+   		<put-attribute name="content" value="/jsp/tiles/errorBodyNoMenu.jsp" />
+  	</definition>
+  	
+  	<definition name="form-dettaglio-news" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Nuova news"/>   
+   		<put-attribute name="content" value="/jsp/news/form.jsp" />
+  	</definition>
+  	
+  	 <definition name="success-page" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Modifica news"/>   
+   		<put-attribute name="content" value="/jsp/news/success.jsp" />
+  	</definition>
+  	
+  	
+  	<!-- INIZIO GESTIONE NEWS -->
+  	<definition name="form-ricerca-news" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Ricerca news"/>   
+   		<put-attribute name="content" value="/jsp/news/ricerca.jsp" />
+  	</definition>
+  	
+  	<definition name="risultati-news" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Elenco news"/>   
+   		<put-attribute name="content" value="/jsp/news/risultatiRicerca.jsp" />
+  	</definition>
+  	
+  	<definition name="storico-risultati-news" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Storico news"/>   
+   		<put-attribute name="content" value="/jsp/news/storicoRisultatiRicerca.jsp" />
+  	</definition>
+  	<!-- FINE GESTIONE NEWS -->
+
+  	
+  	<!-- INIZIO GESTIONE SEZIONI -->
+  	<definition name="form-ricerca-sezione" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Ricerca sezione"/>   
+   		<put-attribute name="content" value="/jsp/sezione/ricerca.jsp" />
+  	</definition>
+  	
+  	<definition name="risultati-sezione" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Elenco sezioni"/>   
+   		<put-attribute name="content" value="/jsp/sezione/risultatiRicerca.jsp" />
+  	</definition>
+  	 	
+  	<definition name="form-dettaglio-sezione" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Nuova sezione"/>   
+   		<put-attribute name="content" value="/jsp/sezione/form.jsp" />
+  	</definition>
+  	
+  	<definition name="success-page-sezione" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Nuova sezione"/>   
+   		<put-attribute name="content" value="/jsp/sezione/success.jsp" />
+  	</definition>
+  	
+  	<definition name="storico-risultati-sezione" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Storico sezione"/>   
+   		<put-attribute name="content" value="/jsp/sezione/storicoRisultatiRicerca.jsp" />
+  	</definition>
+  	<!-- FINE GESTIONE SEZIONI -->
+  	
+  	
+  	<!-- INIZIO GESTIONE DOCUMENTI -->
+  	<definition name="form-dettaglio-documento" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Nuovo documento"/>   
+   		<put-attribute name="content" value="/jsp/documento/form.jsp" />
+  	</definition>
+  	
+  	<definition name="form-ricerca-documento" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Ricerca documento"/>   
+   		<put-attribute name="content" value="/jsp/documento/ricerca.jsp" />
+  	</definition>
+  	
+  	<definition name="risultati-documento" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Elenco documenti"/>   
+   		<put-attribute name="content" value="/jsp/documento/risultatiRicerca.jsp" />
+  	</definition>
+  	
+  	<definition name="form-dettaglio-documento" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Nuovo documento"/>   
+   		<put-attribute name="content" value="/jsp/documento/form.jsp" />
+  	</definition>
+  	
+  	<definition name="documentale-frontend" extends="baseLayoutFrontend">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Area Documentale"/>   
+   		<put-attribute name="content" value="/jsp/documento/documentaleFrontend.jsp" />
+  	</definition>
+  	
+  	<definition name="visualizza-documento-frontend" extends="baseLayoutFrontend">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Area Documentale"/>   
+   		<put-attribute name="content" value="/jsp/documento/visualizzaDocumentoFrontend.jsp" />
+  	</definition>
+  	
+  	<definition name="success-page-documento" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Nuovo documento"/>   
+   		<put-attribute name="content" value="/jsp/documento/success.jsp" />
+  	</definition>
+  	
+  	<definition name="storico-risultati-documento" extends="baseLayout">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Storico documento"/>   
+   		<put-attribute name="content" value="/jsp/documento/storicoRisultatiRicerca.jsp" />
+  	</definition>
+  	<!-- FINE GESTIONE DOCUMENTI -->
+  	
+  	
+  	<definition name="baseLayoutFrontend" template="jsp/baseLayoutFrontend.jsp">
+      	<put-attribute name="header" value="/jsp/tiles/header.jsp" />
+    </definition>
+  	
+  	<definition name="visualizza-frontend" extends="baseLayoutFrontend">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Dettaglio news"/>   
+   		<put-attribute name="content" value="/jsp/news/visualizzaFrontend.jsp" />
+  	</definition>
+  	
+    <definition name="errore-frontend" extends="baseLayoutFrontend">
+ 	 	<put-attribute name="title" value="Gestione Documentale Equitalia - Errore"/>   
+   		<put-attribute name="content" value="/jsp/tiles/errorBodyNoMenu.jsp" />
+  	</definition>
+  	
+    
+</tiles-definitions>

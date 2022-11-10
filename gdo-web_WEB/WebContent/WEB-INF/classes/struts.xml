@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+   <!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.multipart.maxSize" value="999999999" />
+	<package name="actions" extends="struts-default">
+			
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+		
+		<interceptors>
+	       	<interceptor-stack name="gdoCustomStack">
+	       	 	 <interceptor-ref name="customException"/>
+	       	 	 <interceptor-ref name="customLogger"/>
+	             <interceptor-ref name="authenticationInterceptor"/>
+	             <interceptor-ref name="redirectMessage" />
+    			 
+	             
+	             <!--  inizio defaultStack -->
+	            <interceptor-ref name="alias"/>
+	               <interceptor-ref name="servletConfig"/>
+	               <interceptor-ref name="params">
+	                   <param name="excludeParams">dojo\..*,^struts\..*</param>
+	               </interceptor-ref>
+	               <interceptor-ref name="prepare"/>
+	               <interceptor-ref name="i18n"/>
+	               <interceptor-ref name="chain"/>
+	               <interceptor-ref name="debugging"/>
+	               <interceptor-ref name="profiling"/>   
+	               <interceptor-ref name="scopedModelDriven"/>
+	               <interceptor-ref name="modelDriven"/>
+	               <interceptor-ref name="fileUpload"/>
+	               <interceptor-ref name="checkbox"/>
+	               <interceptor-ref name="staticParams"/>
+	               <interceptor-ref name="actionMappingParams"/>
+	               <interceptor-ref name="params">
+	                 <param name="excludeParams">dojo\..*,^struts\..*</param>
+	               </interceptor-ref>
+	               <interceptor-ref name="conversionError"/>
+	               <interceptor-ref name="validation">
+	                   <param name="excludeMethods">input,back,cancel,browse</param>
+	               </interceptor-ref>
+	               <interceptor-ref name="workflow">
+	                   <param name="excludeMethods">input,back,cancel,browse</param>
+	               </interceptor-ref>	  
+	             
+	        </interceptor-stack>
+			
+			<interceptor name="authenticationInterceptor" class="it.equitalia.gdo.web.interceptors.AuthenticationInterceptor" />
+			<interceptor name="customLogger" class="it.equitalia.gdo.web.interceptors.LoggerInterceptor" />
+			<interceptor name="customException" class="it.equitalia.gdo.web.interceptors.ExceptionInterceptor" />
+			<interceptor name="redirectMessage" class="it.equitalia.gdo.web.interceptors.RedirectMessageInterceptor" />
+      
+		</interceptors>
+		
+		<default-interceptor-ref name="gdoCustomStack"></default-interceptor-ref>
+		
+		<global-results>
+			<result name="login" type="redirect">../autenticazione/login.jsp</result>
+	        <result name="errore-generico" type="tiles">errore</result>
+	        <result name="errore-generico-senza-menu" type="tiles">errore-no-menu</result>
+	    </global-results>
+	    
+		<global-exception-mappings>
+			<exception-mapping exception="org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException" result="errore-generico"/>
+        </global-exception-mappings>
+		
+		<action name="home" class="it.equitalia.gdo.web.actions.HomeAction">
+	   		<result name="success" type="tiles">home</result>
+	   	</action>
+	   	
+	  	<!-- INIZIO GESTIONE NEWS -->
+	   	<action name="news!nuova" class="it.equitalia.gdo.web.actions.news.NuovaNewsAction">
+	   		<result name="success" type="redirectAction">
+      			<param name="actionName">news!ricerca.action</param>
+      			<param name="news.id">${news.id}</param>
+      		</result>
+	  		<result name="input" type="tiles">form-dettaglio-news</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="news!ricerca" class="it.equitalia.gdo.web.actions.news.RicercaNewsAction">
+	   		<result name="success" type="tiles">risultati-news</result>
+	  		<result name="input" type="tiles">form-ricerca-news</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="news!visualizza" class="it.equitalia.gdo.web.actions.news.VisualizzaNewsAction">
+	   		<result name="success" type="tiles">form-dettaglio-news</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="news!storico" class="it.equitalia.gdo.web.actions.news.StoricoNewsAction">
+	   		<result name="success" type="tiles">storico-risultati-news</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="news!modifica" class="it.equitalia.gdo.web.actions.news.ModificaNewsAction">   		
+	  		<result name="input" type="tiles">form-dettaglio-news</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="news!salva" class="it.equitalia.gdo.web.actions.news.ModificaNewsAction" method="salva">   		
+	  		<result name="input" type="tiles">form-dettaglio-news</result>
+	  		<result name="success" type="redirectAction">
+      			<param name="actionName">news!ricerca.action</param>
+      			<param name="news.id">${news.id}</param>
+      		</result>
+	   		<result name="error" type="tiles">errore</result>
+	   	</action>
+   		<!-- FINE GESTIONE NEWS -->
+   		
+   		
+   		
+   		<!-- INIZIO GESTIONE SEZIONI -->
+   		<action name="sezione!ricerca" class="it.equitalia.gdo.web.actions.sezione.RicercaSezioneAction">
+	   		<result name="success" type="tiles">risultati-sezione</result>
+	  		<result name="input" type="tiles">form-ricerca-sezione</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="sezione!nuova" class="it.equitalia.gdo.web.actions.sezione.NuovaSezioneAction">
+	   		<result name="success" type="redirectAction">
+      			<param name="actionName">sezione!ricerca.action</param>
+      			<param name="sezione.id">${sezione.id}</param>
+      		</result>
+	  		<result name="input" type="tiles">form-dettaglio-sezione</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="sezione!visualizza" class="it.equitalia.gdo.web.actions.sezione.VisualizzaSezioneAction">
+	   		<result name="success" type="tiles">form-dettaglio-sezione</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="sezione!modifica" class="it.equitalia.gdo.web.actions.sezione.ModificaSezioneAction">   		
+	  		<result name="input" type="tiles">form-dettaglio-sezione</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="sezione!salva" class="it.equitalia.gdo.web.actions.sezione.ModificaSezioneAction" method="salva">   		
+	  		<result name="input" type="tiles">form-dettaglio-sezione</result>
+	  		<result name="success" type="redirectAction">
+      			<param name="actionName">sezione!ricerca.action</param>
+      			<param name="sezione.id">${sezione.id}</param>
+      		</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="sezione!storico" class="it.equitalia.gdo.web.actions.sezione.StoricoSezioneAction">
+	   		<result name="success" type="tiles">storico-risultati-sezione</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	<!-- FINE GESTIONE SEZIONI -->
+	   	
+	   	
+	   	<!-- INIZIO GESTIONE DOCUMENTI -->
+		<action name="documento!salva" class="it.equitalia.gdo.web.actions.documento.ModificaDocumentoAction" method="salva">   		
+	  		<result name="input" type="tiles">form-dettaglio-documento</result>
+	  		<result name="success" type="redirectAction">
+      			<param name="actionName">documento!ricerca.action</param>
+      			<param name="documento.id">${documento.id}</param>
+      		</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="documento!storico" class="it.equitalia.gdo.web.actions.documento.StoricoDocumentoAction">
+	   		<result name="success" type="tiles">storico-risultati-documento</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="documento!visualizza" class="it.equitalia.gdo.web.actions.documento.VisualizzaDocumentoAction">
+	   		<result name="success" type="tiles">form-dettaglio-documento</result>
+	   		<result name="error" type="tiles">errore</result>
+	   	</action>
+	   	
+	   	<action name="documento!form-nuovo" class="it.equitalia.gdo.web.actions.documento.NuovoDocumentoAction">	   			  		
+	  		<result name="input" type="tiles">form-dettaglio-documento</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+      		
+	   	<action name="documento!nuovo" class="it.equitalia.gdo.web.actions.documento.NuovoDocumentoAction" method="creaDocumento">	   		
+	  		<result name="success" type="redirectAction">
+      			<param name="actionName">documento!ricerca.action</param>
+      			<param name="documento.id">${documento.id}</param>
+      		</result>
+	  		<result name="input" type="tiles">form-dettaglio-documento</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>	   	
+	   	
+	   	<action name="documento!ricerca" class="it.equitalia.gdo.web.actions.documento.RicercaDocumentoAction">
+	   		<result name="success" type="tiles">risultati-documento</result>
+	  		<result name="input" type="tiles">form-ricerca-documento</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+		<action name="documento!modifica" class="it.equitalia.gdo.web.actions.documento.ModificaDocumentoAction">   		
+	  		<result name="input" type="tiles">form-dettaglio-documento</result>
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="documentale!frontend" class="it.equitalia.gdo.web.actions.documento.AreaDocumentaleFrontendAction">
+	   		<result name="success" type="tiles">success-page</result>
+	  		<result name="input" type="tiles">documentale-frontend</result>
+	   		<result name="error" type="tiles">errore-frontend</result>    		
+	   	</action>
+	   	
+	   		<action name="visualizza-documento!frontend" class="it.equitalia.gdo.web.actions.documento.AreaDocumentaleFrontendAction" method="visualizza">
+	   		<result name="success" type="tiles">success-page</result>
+	  		<result name="input" type="tiles">visualizza-documento-frontend</result>
+	   		<result name="error" type="tiles">errore-frontend</result>    		
+	   	</action>
+	   	
+	   	<action name="download-documento!frontend" class="it.equitalia.gdo.web.actions.documento.AreaDocumentaleFrontendAction" method="download">   		
+	  		<result name="success" type="stream">
+			  <param name="contentType">application/octet-stream</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename="${filename}"</param>
+			  <param name="bufferSize">8192</param>
+			</result>  		
+	   		<result name="error" type="tiles">errore-frontend</result>     		
+	   	</action>
+	   	<!-- FINE GESTIONE DOCUMENTI -->
+	   	
+	   	
+	   	
+	   	<action name="allegato!download" class="it.equitalia.gdo.web.actions.news.DownloadAllegatoAction">   		
+		  	<result name="success" type="stream">
+			  <param name="contentType">application/octet-stream</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename="${filename}"</param>
+			  <param name="bufferSize">8192</param>
+			</result>  		
+	   		<result name="error" type="tiles">errore</result>    		
+	   	</action>
+	   	
+	   	<action name="documento!download" class="it.equitalia.gdo.web.actions.documento.DownloadDocumentoAction">   		
+		  	<result name="success" type="stream">
+			  <param name="contentType">application/octet-stream</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename="${filename}"</param>
+			  <param name="bufferSize">8192</param>
+			</result>
+	   		<result name="error" type="tiles">errore</result>
+	   	</action>
+	   	
+	   	<action name="download!frontend" class="it.equitalia.gdo.web.actions.news.VisualizzazioneNewsFrontendAction" method="download">   		
+	  		<result name="success" type="stream">
+			  <param name="contentType">application/octet-stream</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename="${filename}"</param>
+			  <param name="bufferSize">8192</param>
+			</result>  		
+	   		<result name="error" type="tiles">errore-frontend</result>     		
+	   	</action>
+	   	
+	   	<action name="download!manuale" class="it.equitalia.gdo.web.actions.DownloadManualeAction">
+	   		 <result name="success" type="stream">
+			  <param name="contentType">application/pdf</param>
+			  <param name="inputName">fileInputStream</param>
+			  <param name="contentDisposition">attachment;filename="${filename}"</param>
+			  <param name="bufferSize">8192</param>
+			</result>
+			<result name="error" type="tiles">errore</result>
+	   	</action>
+	   	
+	   	<!--
+	   	
+	   	 Al momento la visualizzazione Frontend non e` utilizzata, si utilizza popup JS	   	 
+	   	  
+	   	<action name="visualizzazione!frontend" class="it.equitalia.gdo.web.actions.news.VisualizzazioneNewsFrontendAction" method="visualizza">   		
+	  		<result name="input" type="tiles">home</result>
+	  		<result name="success" type="tiles">visualizza-frontend</result>
+	   		<result name="error" type="tiles">errore-frontend</result>    		
+	   	</action>
+	   	 -->
+
+
+   	</package>
+		
+</struts>

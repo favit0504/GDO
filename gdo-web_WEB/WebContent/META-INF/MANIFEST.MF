@@ -1,0 +1,6 @@
+Manifest-Version: 2.0
+Implementation-Version: 1.1.0 build 1
+Class-Path: log4j-1.2.16.jar 
+ gdo-commons.jar 
+ gdo-abilitazioni-web-services.jar
+

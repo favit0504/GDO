@@ -1,0 +1,1 @@
+Immagini per il tema jquery-ui per i dialog

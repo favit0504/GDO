@@ -207,6 +207,25 @@ function mostraWarningVisualizzaPopUp(){
 				   						 doubleName="news.filtroServizioAltriUtenti.valori"></s:doubleselect>
 			                        </div>
 			                    </section>
+
+			                     <h3 style="display:none;">Utenti esterni</h3>
+			                    <section style="display:none;">
+			                     	<div class="sottosteps utentiEsterni clearfix">
+					                	<ul>
+						                	<li class="current"><a name="utentiEsterni"  id="tab_visibilita_utentiEsterni_0">Servizio</a></li>
+					                    </ul>
+				                    </div>
+			                       <div id="content_tab_visibilita_utentiEsterni_0"  class="content_tab_sottosteps first">
+				                         <s:doubleselect disabled="%{isModalitaVisualizza()}" list="opzioniServizioUtentiEsterni" name="servizio_utentiEsterni_options" id="servizio_utentiEsterni_options"
+				   						 doubleList="opzioniScelteServizioUtentiEsterni" doubleId="servizio_utentiEsterni_selected"
+				   						 doubleName="news.filtroServizioAltriUtenti.valori"></s:doubleselect>
+				   						 				   						 <%
+		/** 				   						 todo st modificare qui doublename 	
+		*/
+
+	%>	 
+			                        </div>
+			                    </section>
 			
 			
 								<h3 style="display:none;">Allegato</h3>

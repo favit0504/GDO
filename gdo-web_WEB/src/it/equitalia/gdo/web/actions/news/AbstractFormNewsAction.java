@@ -59,6 +59,7 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 	protected static Map<String,String> opzioniServizioEnte = new LinkedHashMap<String,String>();
 	protected static Map<String,String> opzioniServizioAgente = new LinkedHashMap<String,String>();
 	protected static Map<String,String> opzioniServizioAltriUtenti = new LinkedHashMap<String,String>();
+	protected static Map<String,String> opzioniServizioUtentiEsterni = new LinkedHashMap<String,String>();
 	protected static Map<String,String> opzioniTipoEnte = new LinkedHashMap<String,String>();
 	protected static Map<Integer,String> opzioniAmbito = new LinkedHashMap<Integer,String>();
 	
@@ -78,6 +79,7 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 	protected Map<String,String> opzioniScelteServizioAgente = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniScelteServizioEnte = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniScelteServizioAltriUtenti = new LinkedHashMap<String,String>();
+	protected Map<String,String> opzioniScelteServizioUtentiEsterni = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniScelteTipoEnte = new LinkedHashMap<String,String>();
 	
 		
@@ -175,6 +177,14 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 		}
 		return opzioniServizioAltriUtenti;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String,String> getOpzioniServizioUtentiEsterni() {
+		if(getSession().containsKey("opzioniServizioUtentiEsterni")){
+			opzioniServizioUtentiEsterni = (Map<String, String>) getSession().get("opzioniServizioUtentiEsterni");
+		}
+		return opzioniServizioUtentiEsterni;
+	}
 
 	@SuppressWarnings("unchecked")
 	public  Map<Integer, String> getOpzioniRaggruppamentoSocietario() {
@@ -220,6 +230,10 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 	
 	public Map<String, String> getOpzioniScelteServizioAltriUtenti() {
 		return opzioniScelteServizioAltriUtenti;
+	}
+	
+	public Map<String, String> getOpzioniScelteServizioUtentiEsterni() {
+		return opzioniScelteServizioUtentiEsterni;
 	}
 	public Map<String, String> getOpzioniScelteServizioEnte() {
 		return opzioniScelteServizioEnte;
@@ -269,16 +283,16 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 	public abstract Boolean isModalitaCreazione();	
 	
 	public void prepare() throws Exception {
-		super.prepare();		
-		
+		super.prepare();
+
 		//popolamento lista sx doublelist
 		p = new PopolaFiltriNews(getSession());
 		p.popolaFiltriNews();
-		
+
 		if (news != null) {
 			popolaOptionsConValoriSelezionati();
 		}
-		
+
 	}
 	
 
@@ -322,7 +336,7 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 			else {				
 				AntiSamy as = new AntiSamy();
 				try {
-					//antiSamyPolicyObject è thread safe vedi inizializzazione per riferimenti
+					//antiSamyPolicyObject ï¿½ thread safe vedi inizializzazione per riferimenti
 					CleanResults cr = as.scan(news.getTesto(),AntiSamyPolicies.getInstance().getPolicyTextarea());
 					String testoDaSalvareSuDB = cr.getCleanHTML();
 					news.setTesto(testoDaSalvareSuDB);
@@ -485,6 +499,19 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 	
 				}
 			}
+			
+			//TODO ST SERVIZI PER UTENTI ESTERNI
+			if (news.getFiltroServizioAltriUtenti() != null) {
+				for (String campo : news.getFiltroServizioAltriUtenti().getValori())
+					opzioniScelteServizioAltriUtenti.put(campo, p.getMappaServiziUtentiEsterni().get(campo));
+				
+				SortedSet<Map.Entry<String,String>> sortedEntries = StringUtils.entriesSortedByValues(opzioniScelteServizioAltriUtenti);
+				opzioniScelteServizioAltriUtenti = new LinkedHashMap<String, String>();
+				for (Entry<String, String> entry : sortedEntries) {
+					opzioniScelteServizioAltriUtenti.put(entry.getKey(), entry.getValue());
+					
+				}
+			}
 		
 	}
 
@@ -544,7 +571,7 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 	
 	protected void valorizzaNewsVisualizzateComePopUp()
 	throws BusinessException {
-		// In fase di inserimento o modifica di una news è possibile impostare il flag "Visualizza come pop up"
+		// In fase di inserimento o modifica di una news ï¿½ possibile impostare il flag "Visualizza come pop up"
 		// solo se non ci sono altre news che possono essere visualizzate da pop up
 		NewsServiceBD newsService = new NewsServiceBD();
 		List<NewsBean> newsVisualizzateConPopUp = newsService.recuperaNewsPopUp();		

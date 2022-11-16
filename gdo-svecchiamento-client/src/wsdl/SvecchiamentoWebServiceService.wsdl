@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions name="SvecchiamentoWebServiceService" targetNamespace="http://webservices.gdo.equitalia.it/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://webservices.gdo.equitalia.it/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://webservices.gdo.equitalia.it/" schemaLocation="SvecchiamentoWebServiceService_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="invocaSvecchiamento">
+    <part element="tns:invocaSvecchiamento" name="parameters"/>
+  </message>
+  <message name="invocaSvecchiamentoResponse">
+    <part element="tns:invocaSvecchiamentoResponse" name="parameters"/>
+  </message>
+  <message name="BusinessException">
+    <part element="tns:BusinessException" name="fault"/>
+  </message>
+  <message name="invocaSvecchiamentoDocumenti">
+    <part element="tns:invocaSvecchiamentoDocumenti" name="parameters"/>
+  </message>
+  <message name="invocaSvecchiamentoDocumentiResponse">
+    <part element="tns:invocaSvecchiamentoDocumentiResponse" name="parameters"/>
+  </message>
+  <message name="invocaSvecchiamentoNews">
+    <part element="tns:invocaSvecchiamentoNews" name="parameters"/>
+  </message>
+  <message name="invocaSvecchiamentoNewsResponse">
+    <part element="tns:invocaSvecchiamentoNewsResponse" name="parameters"/>
+  </message>
+  <portType name="SvecchiamentoWebServiceDelegate">
+    <operation name="invocaSvecchiamento">
+      <input message="tns:invocaSvecchiamento"/>
+      <output message="tns:invocaSvecchiamentoResponse"/>
+      <fault message="tns:BusinessException" name="BusinessException"/>
+    </operation>
+    <operation name="invocaSvecchiamentoDocumenti">
+      <input message="tns:invocaSvecchiamentoDocumenti"/>
+      <output message="tns:invocaSvecchiamentoDocumentiResponse"/>
+      <fault message="tns:BusinessException" name="BusinessException"/>
+    </operation>
+    <operation name="invocaSvecchiamentoNews">
+      <input message="tns:invocaSvecchiamentoNews"/>
+      <output message="tns:invocaSvecchiamentoNewsResponse"/>
+      <fault message="tns:BusinessException" name="BusinessException"/>
+    </operation>
+  </portType>
+  <binding name="SvecchiamentoWebServicePortBinding" type="tns:SvecchiamentoWebServiceDelegate">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="invocaSvecchiamento">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="BusinessException">
+        <soap:fault name="BusinessException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="invocaSvecchiamentoDocumenti">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="BusinessException">
+        <soap:fault name="BusinessException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="invocaSvecchiamentoNews">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="BusinessException">
+        <soap:fault name="BusinessException" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="SvecchiamentoWebServiceService">
+    <port binding="tns:SvecchiamentoWebServicePortBinding" name="SvecchiamentoWebServicePort">
+      <soap:address location="http://localhost:9081/gdo-web-services/SvecchiamentoWebServiceService"/>
+    </port>
+  </service>
+</definitions>

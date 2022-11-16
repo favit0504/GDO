@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
+UseWSFEP61ScanPolicy: true
 Class-Path: gdo-commons.jar 
  log4j-1.2.16.jar
 UseEJB61FEPScanPolicy: true
-UseWSFEP61ScanPolicy: true
 

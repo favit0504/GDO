@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="gdo-unit" transaction-type="JTA">
+    	<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>      
+        <class>it.equitalia.gdo.dao.model.Allegato</class>
+        <class>it.equitalia.gdo.dao.model.BlobAllegato</class>
+        <class>it.equitalia.gdo.dao.model.BlobDocumento</class>
+        <class>it.equitalia.gdo.dao.model.Documento</class>
+        <class>it.equitalia.gdo.dao.model.News</class>        
+        <class>it.equitalia.gdo.dao.model.Sezione</class>
+        <class>it.equitalia.gdo.dao.model.SezioneUtenza</class>                        
+        <class>it.equitalia.gdo.dao.model.generic.AbstractFiltro</class>
+        <class>it.equitalia.gdo.dao.model.FiltroRegione</class>
+        <class>it.equitalia.gdo.dao.model.FiltroRegioneEnte</class>
+        <class>it.equitalia.gdo.dao.model.FiltroRegioneAgente</class>
+        <class>it.equitalia.gdo.dao.model.ValoreFiltroRegione</class>
+        <class>it.equitalia.gdo.dao.model.FiltroProvincia</class>
+        <class>it.equitalia.gdo.dao.model.FiltroProvinciaAgente</class>
+        <class>it.equitalia.gdo.dao.model.FiltroProvinciaEnte</class>        
+        <class>it.equitalia.gdo.dao.model.ValoreFiltroProvincia</class>
+        <class>it.equitalia.gdo.dao.model.FiltroServizio</class>        
+        <class>it.equitalia.gdo.dao.model.FiltroServizioAgente</class>
+        <class>it.equitalia.gdo.dao.model.FiltroServizioEnte</class>
+        <class>it.equitalia.gdo.dao.model.ValoreFiltroServizio</class>
+        <class>it.equitalia.gdo.dao.model.FiltroSocieta</class>
+        <class>it.equitalia.gdo.dao.model.ValoreFiltroSocieta</class>        
+        <class>it.equitalia.gdo.dao.model.FiltroEnte</class>
+        <class>it.equitalia.gdo.dao.model.ValoreFiltroEnte</class>        
+        <class>it.equitalia.gdo.dao.model.generic.EntitaVersionabile</class> 
+        <class>it.equitalia.gdo.dao.model.FiltroTipologiaEnte</class>
+        <class>it.equitalia.gdo.dao.model.ValoreFiltroTipologiaEnte</class>           
+        <class>it.equitalia.gdo.dao.model.FiltroAmbito</class>
+        <class>it.equitalia.gdo.dao.model.ValoreFiltroAmbito</class>           
+        <properties>
+	        <property name="openjpa.TransactionMode" value="managed"/>
+	    	<property name="openjpa.Log" value="DefaultLevel=TRACE, Runtime=TRACE, Tool=TRACE, SQL=TRACE"/>
+	    	<property name="openjpa.DynamicEnhancementAgent" value="true"/>
+	    	<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+            <property name="openjpa.Compatibility" value="CheckDatabaseForCascadePersistToDetachedEntity=true"/>
+    	</properties>
+    </persistence-unit>
+    
+     <persistence-unit name="gdo-db2-unit" transaction-type="JTA">
+     	<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>      
+        <class>it.equitalia.gdo.dao.model.Regione</class>
+        <class>it.equitalia.gdo.dao.model.Servizio</class>
+        <class>it.equitalia.gdo.dao.model.TipoEnte</class>
+        <class>it.equitalia.gdo.dao.model.Provincia</class>
+        <class>it.equitalia.gdo.dao.model.Ambito</class>                  
+        <properties>
+       	 	<property name="openjpa.TransactionMode" value="managed"/>	       
+    		<property name="openjpa.Log" value="DefaultLevel=TRACE, Runtime=TRACE, Tool=TRACE, SQL=TRACE"/>
+    		<property name="openjpa.DynamicEnhancementAgent" value="true"/>
+    		<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    		<property name="openjpa.Compatibility" value="CheckDatabaseForCascadePersistToDetachedEntity=true"/>
+    	</properties>
+    </persistence-unit>
+    
+    <persistence-unit name="geu-unit" transaction-type="JTA">
+    	<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>     
+       	<class>it.equitalia.gdo.dao.model.ProvinciaAgenteAmbito</class>   
+        <properties>
+	        <property name="openjpa.TransactionMode" value="managed"/>
+	    	<property name="openjpa.Log" value="DefaultLevel=TRACE, Runtime=TRACE, Tool=TRACE, SQL=TRACE"/>
+	    	<property name="openjpa.DynamicEnhancementAgent" value="true"/>
+    		<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+    		<property name="openjpa.Compatibility" value="CheckDatabaseForCascadePersistToDetachedEntity=true"/>
+    	</properties>
+    </persistence-unit>
+</persistence>

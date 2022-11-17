@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions name="NewsFrontendWebServiceService" targetNamespace="http://webservices.gdo.equitalia.it/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://webservices.gdo.equitalia.it/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://webservices.gdo.equitalia.it/" schemaLocation="NewsFrontendWebServiceService_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="recuperaNewsAttiveDestinateAdUtenteEnte">
+    <part element="tns:recuperaNewsAttiveDestinateAdUtenteEnte" name="parameters"/>
+  </message>
+  <message name="recuperaNewsAttiveDestinateAdUtenteEnteResponse">
+    <part element="tns:recuperaNewsAttiveDestinateAdUtenteEnteResponse" name="parameters"/>
+  </message>
+  <message name="BusinessException">
+    <part element="tns:BusinessException" name="fault"/>
+  </message>
+  <message name="recuperaNewsAttiveDestinateAdUtenteAgente">
+    <part element="tns:recuperaNewsAttiveDestinateAdUtenteAgente" name="parameters"/>
+  </message>
+  <message name="recuperaNewsAttiveDestinateAdUtenteAgenteResponse">
+    <part element="tns:recuperaNewsAttiveDestinateAdUtenteAgenteResponse" name="parameters"/>
+  </message>
+  <portType name="NewsFrontendWebServiceDelegate">
+    <operation name="recuperaNewsAttiveDestinateAdUtenteEnte">
+      <input message="tns:recuperaNewsAttiveDestinateAdUtenteEnte"/>
+      <output message="tns:recuperaNewsAttiveDestinateAdUtenteEnteResponse"/>
+      <fault message="tns:BusinessException" name="BusinessException"/>
+    </operation>
+    <operation name="recuperaNewsAttiveDestinateAdUtenteAgente">
+      <input message="tns:recuperaNewsAttiveDestinateAdUtenteAgente"/>
+      <output message="tns:recuperaNewsAttiveDestinateAdUtenteAgenteResponse"/>
+      <fault message="tns:BusinessException" name="BusinessException"/>
+    </operation>
+  </portType>
+  <binding name="NewsFrontendWebServicePortBinding" type="tns:NewsFrontendWebServiceDelegate">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="recuperaNewsAttiveDestinateAdUtenteEnte">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="BusinessException">
+        <soap:fault name="BusinessException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="recuperaNewsAttiveDestinateAdUtenteAgente">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="BusinessException">
+        <soap:fault name="BusinessException" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="NewsFrontendWebServiceService">
+    <port binding="tns:NewsFrontendWebServicePortBinding" name="NewsFrontendWebServicePort">
+      <soap:address location="http://localhost:9081/gdo-web-services/NewsFrontendWebServiceService"/>
+    </port>
+  </service>
+</definitions>

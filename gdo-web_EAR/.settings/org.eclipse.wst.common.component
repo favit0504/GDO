@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="gdo-web_EAR">
+        <wb-resource deploy-path="/" source-path="/"/>
+        <dependent-module archiveName="gdo-web.war" deploy-path="/" handle="module:/resource/gdo-web/gdo-web">
+            <dependent-object>WebModule_1404828872969</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gdo-abilitazioni-web-services.jar" deploy-path="/" handle="module:/resource/gdo-abilitazioni-web-services/gdo-abilitazioni-web-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gdo-commons.jar" deploy-path="/" handle="module:/resource/gdo-commons/gdo-commons">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

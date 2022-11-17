@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://service.gestionaleutenze.equitaliaservizi.it/"
+	version="1.0" xmlns:tns="http://service.gestionaleutenze.equitaliaservizi.it/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="getUserProfile" type="tns:getUserProfile" />
+
+	<xs:element name="getUserProfileResponse" type="tns:getUserProfileResponse" />
+
+	<xs:complexType name="getUserProfile">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="getUserProfileRequest"
+				type="tns:userProfileRequest" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- ********************************************************************** -->
+	<!-- REQUEST                                                                -->
+	<!-- ********************************************************************** -->
+	<xs:complexType name="userProfileRequest">
+		<xs:sequence>
+			<xs:element name="codiceProgetto">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="3" />
+						<xs:pattern value="[A-Z0-9]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="idUtente">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="10" />
+						<xs:pattern value="[A-Z0-9]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="tipoCliente">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="1" />
+						<xs:pattern value="[A-Z]" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+
+	<!-- ********************************************************************** -->
+	<!-- RESPONSE                                                               -->
+	<!-- ********************************************************************** -->
+	<xs:complexType name="getUserProfileResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" name="getUserProfileResponse"
+				type="tns:userProfile" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="userProfile">
+		<xs:sequence>
+			<xs:element name="esitoServizio">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="0" />
+						<xs:maxLength value="2" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="messaggioServizio">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="100" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="idUtente">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="10" />
+						<xs:pattern value="[A-Z0-9]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="email">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:pattern value="[A-Za-z0-9_]+([-+.'][A-Za-z0-9_]+)*@[A-Za-z0-9_]+([-.][A-Za-z0-9_]+)*\.[A-Za-z0-9_]+([-.][A-Za-z0-9_]+)*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" name="ruolo" type="tns:ruolo" />
+			<xs:element minOccurs="0" name="servizio" type="tns:servizio" />
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="listaFunzioni" nillable="true" type="tns:funzione" />
+			<xs:element maxOccurs="unbounded" minOccurs="0" name="listaAmbiti"
+				nillable="true" type="tns:ambito" />
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- == AMBITO ======================================================= -->
+	<xs:complexType name="ambito">
+		<xs:sequence>
+			<xs:element name="codice" type="xs:int" />
+			<xs:element name="descrizione">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="100" />
+						<xs:pattern value="[A-Z]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="provincia">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="100" />
+						<xs:pattern value="[A-Z]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="concessionario">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="150" />
+						<xs:pattern value="[A-Z]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element maxOccurs="unbounded" minOccurs="0"
+				name="listaDocumenti" nillable="true" type="tns:documento" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- == DOCUMENTO ==================================================== -->
+	<xs:complexType name="documento">
+		<xs:sequence>
+			<xs:element name="codice">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:length value="3" />
+						<xs:pattern value="[A-Z0-9]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="descrizione">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="50" />
+						<xs:pattern value="[A-Z0-9' ]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- == FUNZIONE ===================================================== -->
+	<xs:complexType name="funzione">
+		<xs:sequence>
+			<xs:element name="codice">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="256" />
+						<xs:pattern value="[A-Z0-9]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="descrizione">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="50" />
+						<xs:pattern value="[A-Z0-9' ]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- == RUOLO ======================================================== -->
+	<xs:complexType name="ruolo">
+		<xs:sequence>
+			<xs:element name="codice">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="15" />
+						<xs:pattern value="[A-Z0-9]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="descrizione">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="50" />
+						<xs:pattern value="[A-Z0-9' ]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<!-- == SERVIZIO ===================================================== -->
+	<xs:complexType name="servizio">
+		<xs:sequence>
+			<xs:element name="codiceProgetto">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="3" />
+						<xs:pattern value="[A-Z0-9]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="nome">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="50" />
+						<xs:pattern value="[A-Z0-9' ]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="codiceServizio">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1" />
+						<xs:maxLength value="3" />
+						<xs:pattern value="[A-Z0-9]*" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

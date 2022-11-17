@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema targetNamespace="http://webservices.gdo.equitalia.it/" version="1.0" xmlns:tns="http://webservices.gdo.equitalia.it/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="BusinessException" type="tns:BusinessException"/>
+
+  <xs:element name="invocaSvecchiamento" type="tns:invocaSvecchiamento"/>
+
+  <xs:element name="invocaSvecchiamentoDocumenti" type="tns:invocaSvecchiamentoDocumenti"/>
+
+  <xs:element name="invocaSvecchiamentoDocumentiResponse" type="tns:invocaSvecchiamentoDocumentiResponse"/>
+
+  <xs:element name="invocaSvecchiamentoNews" type="tns:invocaSvecchiamentoNews"/>
+
+  <xs:element name="invocaSvecchiamentoNewsResponse" type="tns:invocaSvecchiamentoNewsResponse"/>
+
+  <xs:element name="invocaSvecchiamentoResponse" type="tns:invocaSvecchiamentoResponse"/>
+
+  <xs:complexType name="invocaSvecchiamentoDocumenti"/>
+
+  <xs:complexType name="invocaSvecchiamentoDocumentiResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BusinessException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="invocaSvecchiamento"/>
+
+  <xs:complexType name="invocaSvecchiamentoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="invocaSvecchiamentoNews"/>
+
+  <xs:complexType name="invocaSvecchiamentoNewsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

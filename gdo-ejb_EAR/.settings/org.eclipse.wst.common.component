@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="gdo-ejb_EAR">
+        <wb-resource deploy-path="/" source-path="/"/>
+        <dependent-module archiveName="gdo-dao.jar" deploy-path="/" handle="module:/resource/gdo-dao/gdo-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gdo-ejb.jar" deploy-path="/" handle="module:/resource/gdo-ejb/gdo-ejb">
+            <dependent-object>Module_1404823790776</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gdo-commons.jar" deploy-path="/" handle="module:/resource/gdo-commons/gdo-commons">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gdo-web-services.war" deploy-path="/" handle="module:/resource/gdo-web-services/gdo-web-services">
+            <dependent-object>WebModule_1409817673753</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="spjmsclient.jar" deploy-path="/" handle="module:/classpath/lib/gdo-svecchiamento/lib/spjmsclient.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-httpclient-3.1.jar" deploy-path="/" handle="module:/classpath/lib/gdo-svecchiamento/lib/commons-httpclient-3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-codec-1.3.jar" deploy-path="/" handle="module:/classpath/lib/gdo-svecchiamento/lib/commons-codec-1.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gdo-svecchiamento.jar" deploy-path="/" handle="module:/resource/gdo-svecchiamento/gdo-svecchiamento">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

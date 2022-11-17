@@ -11,11 +11,13 @@ public class Costanti {
 	private final static String ENTE_VALORE = "E";
 	private final static String AGENTE_VALORE = "C";
 	private final static String EQUITALIA_VALORE = "X";
+	private final static String ALTRIUTENTI_VALORE = "";
+	
 	public enum TipologiaUtente {
 	    ENTE("Ente", ENTE_VALORE),
 	    AGENTE("Agente", AGENTE_VALORE),
-	    EQUITALIA("Equitalia", EQUITALIA_VALORE);
-	    
+	    EQUITALIA("Equitalia", EQUITALIA_VALORE),
+	    ALTRIUTENTI("AltriUtenti", ALTRIUTENTI_VALORE);
 	    
 	    private final String descrizione;
 	    private final String valore;
@@ -32,9 +34,11 @@ public class Costanti {
 	    	
 	    	return descrizione;
 	    }
-
+	    	
 		
 	}
+	
+	
 	
 	private final static int SI_VAL = 1;
 	private final static int NO_VAL = 0; 
@@ -142,10 +146,13 @@ public class Costanti {
 
 	private final static int SOLO_ENTE_VAL =0;
 	private final static int SOLO_AGENTE_VAL =1;
+	private final static int SOLO_ALTRO_UTENTE_VAL =2;
+	
 	public enum OPZIONI_TIPOLOGIA_UTENTE {
 		
 		SOLO_ENTE("Enti", SOLO_ENTE_VAL),		
-		SOLO_AGENTE("Agenti", SOLO_AGENTE_VAL);
+		SOLO_AGENTE("Agenti", SOLO_AGENTE_VAL),
+		SOLO_ALTRO_UTENTE("Altri utenti", SOLO_ALTRO_UTENTE_VAL);
 
 
 		private final String descrizione;
@@ -166,6 +173,37 @@ public class Costanti {
 
 		public static String getDescrizioneByValore(int value) { 
 			for(OPZIONI_TIPOLOGIA_UTENTE e: OPZIONI_TIPOLOGIA_UTENTE.values()) { 
+				if(e.getValue() == value) 
+				{ return e.getDescrizione(); 
+				} 
+			} return null;
+		}
+	}
+	
+   public enum OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO {
+		
+		SOLO_ENTE("Enti", SOLO_ENTE_VAL),		
+		SOLO_AGENTE("Agenti", SOLO_AGENTE_VAL);
+
+
+		private final String descrizione;
+		private final int valore;	    
+
+		private OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO(String descrizione, int valore) {
+			this.descrizione = descrizione;
+			this.valore=valore;	      	        	        
+		}
+
+		public int getValue() {
+			return valore;
+		}
+
+		public String getDescrizione() {	    	
+			return descrizione;
+		}
+
+		public static String getDescrizioneByValore(int value) { 
+			for(OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO e: OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.values()) { 
 				if(e.getValue() == value) 
 				{ return e.getDescrizione(); 
 				} 

@@ -18,6 +18,7 @@ import it.equitalia.gdo.commons.valueobjects.FiltroRegioneAgenteBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroRegioneBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroRegioneEnteBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioAgenteBean;
+import it.equitalia.gdo.commons.valueobjects.FiltroServizioAltriUtentiBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioEnteBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroSocietaBean;
@@ -43,6 +44,7 @@ import it.equitalia.gdo.dao.model.FiltroRegioneAgente;
 import it.equitalia.gdo.dao.model.FiltroRegioneEnte;
 import it.equitalia.gdo.dao.model.FiltroServizio;
 import it.equitalia.gdo.dao.model.FiltroServizioAgente;
+import it.equitalia.gdo.dao.model.FiltroServizioAltriUtenti;
 import it.equitalia.gdo.dao.model.FiltroServizioEnte;
 import it.equitalia.gdo.dao.model.FiltroSocieta;
 import it.equitalia.gdo.dao.model.FiltroTipologiaEnte;
@@ -116,6 +118,11 @@ public class ModelToBean {
 				case FiltroServizioAgente:
 					FiltroServizioAgenteBean filtroBean = execute((FiltroServizioAgente) filtroGenerico);
 					bean.setFiltroServizioAgente( filtroBean );
+					break;
+					
+				case FiltroServizioAltriUtenti:
+					FiltroServizioAltriUtentiBean filtroUtenti= execute((FiltroServizioAltriUtenti) filtroGenerico);
+					bean.setFiltroServizioAltriUtenti( filtroUtenti );
 					break;
 
 				case FiltroSocieta:
@@ -244,13 +251,24 @@ public class ModelToBean {
 		if(news.getAgente() != null && news.getAgente()){
 			bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione());
 		}
+		
 		bean.setEnte(news.getEnte());
 		if(news.getEnte() != null && news.getEnte()){
 			if(bean.getDescrizioneTipoUtente() != null && bean.getDescrizioneTipoUtente() != ""){
-				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione() + "/" +Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione());	
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione()+ "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione() );	
 			} else {
 				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione());
 			}
+		}
+		
+		bean.setAltriUtenti(news.getAltriUtenti());
+		if(news.getAltriUtenti() != null && news.getAltriUtenti()){
+			if(bean.getDescrizioneTipoUtente() != null && bean.getDescrizioneTipoUtente() != ""){
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione()+ "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione() );	
+			} else {
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione());
+			}
+			
 		}
 
 		if(news.getDataInizioPubblicazione() != null)
@@ -548,6 +566,13 @@ public class ModelToBean {
 
 	 public static FiltroServizioAgenteBean execute(FiltroServizioAgente entita) {
 		 FiltroServizioAgenteBean bean = new FiltroServizioAgenteBean();
+		 convertiFiltroServizio(entita,bean);
+		 return bean;
+	 }
+	 
+	 
+	 public static FiltroServizioAltriUtentiBean execute(FiltroServizioAltriUtenti entita) {
+		 FiltroServizioAltriUtentiBean bean = new FiltroServizioAltriUtentiBean();
 		 convertiFiltroServizio(entita,bean);
 		 return bean;
 	 }

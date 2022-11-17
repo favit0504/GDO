@@ -113,21 +113,31 @@ public class RicercaNewsAction extends AbstractNewsAction  implements Preparable
 				campiValorizzati = true;
 				news.setAgente(null);
 				news.setEnte(null);
+				news.setAltriUtenti(null);
 			}
 			else if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()) ){
 				campiValorizzati = true;
 				news.setAgente(true);
 				news.setEnte(false);
+				news.setAltriUtenti(false);
 			}
 			else if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue())){
 				campiValorizzati = true;
 				news.setAgente(false);
 				news.setEnte(true);
+				news.setAltriUtenti(false);
+			}
+			else if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getValue()) && (!tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue()) && !tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()))){
+				campiValorizzati = true;
+				news.setAgente(false);
+				news.setEnte(false);
+				news.setAltriUtenti(true);
 			}
 		}
 		else {
 			news.setAgente(null);
 			news.setEnte(null);
+			news.setAltriUtenti(null);
 		}
 
 
@@ -169,7 +179,9 @@ public class RicercaNewsAction extends AbstractNewsAction  implements Preparable
 			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()))
 				news.setAgente(true);
 			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue()))
-				news.setEnte(true);								
+				news.setEnte(true);			
+			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getValue()))
+				news.setAltriUtenti(true);		
 		}
 	}
 }

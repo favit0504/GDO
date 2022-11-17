@@ -125,6 +125,9 @@ public class NewsOracleDAO extends EntitaVersionabileDAO<News> implements NewsDA
 		if(params.get(PARAM_AGENTE)!=null){
 			queryString+="and n.agente = :" + PARAM_AGENTE + " ";
 		}
+		if(params.get(PARAM_ALTRI_UTENTI)!=null){
+			queryString+="and n.altriUtenti = :" + PARAM_ALTRI_UTENTI + " ";
+		}
 		if(params.get(PARAM_FLG_POP_UP)!=null){
 			queryString+="and n.visualizzaPopUp = :" + PARAM_FLG_POP_UP + " ";
 		}
@@ -180,6 +183,9 @@ public class NewsOracleDAO extends EntitaVersionabileDAO<News> implements NewsDA
 		if(params.get(PARAM_AGENTE)!=null){
 			q.setParameter(PARAM_AGENTE, params.get(PARAM_AGENTE));
 		}
+		if(params.get(PARAM_ALTRI_UTENTI)!=null){
+			q.setParameter(PARAM_ALTRI_UTENTI, params.get(PARAM_ALTRI_UTENTI));
+		}
 		if(params.get(PARAM_FLG_POP_UP)!=null){
 			q.setParameter(PARAM_FLG_POP_UP, params.get(PARAM_FLG_POP_UP));
 		}
@@ -225,6 +231,7 @@ public class NewsOracleDAO extends EntitaVersionabileDAO<News> implements NewsDA
 //						
 					case FiltroServizioEnte:
 					case FiltroServizioAgente:
+					case FiltroServizioAltriUtenti:
 						List<ValoreFiltroServizio> listaValoriFiltro = ( (FiltroServizio) filtro ).getValoriFiltriServizio();					
 						for (ValoreFiltroServizio valoreServizio : ListUtils.emptyIfNull(listaValoriFiltro) ) 
 						{
@@ -335,7 +342,9 @@ public class NewsOracleDAO extends EntitaVersionabileDAO<News> implements NewsDA
 		if(params.get(PARAM_AGENTE)!=null){
 			queryString+="and n.agente = :" + PARAM_AGENTE + " ";
 		}
-		
+		if(params.get(PARAM_ALTRI_UTENTI)!=null){
+			queryString+="and n.altriUtenti = :" + PARAM_ALTRI_UTENTI + " ";
+		}
 		queryString+=" order by n.id desc ";
 		
 		Query q = entityManager.createQuery(queryString);
@@ -382,6 +391,9 @@ public class NewsOracleDAO extends EntitaVersionabileDAO<News> implements NewsDA
 		if(params.get(PARAM_AGENTE)!=null){
 			q.setParameter(PARAM_AGENTE, params.get(PARAM_AGENTE));
 		}
+		if(params.get(PARAM_ALTRI_UTENTI)!=null){
+			queryString+="and n.altriUtenti = :" + PARAM_ALTRI_UTENTI + " ";
+		}
 		
 		List<News> news= q.getResultList();
 		return news;
@@ -389,13 +401,16 @@ public class NewsOracleDAO extends EntitaVersionabileDAO<News> implements NewsDA
 	
 	@SuppressWarnings("unchecked")
 	public List<News> findNewsPerTipologiaUtente(Map<String, Object> params) {
-		String queryString = "select n from "+type.getName()+" n where n.valida = true and n.stato = 1";	
+		String queryString = "select n from "+type.getName()+" n where n.valida = true and n.stato = 1 ";	
 		
 		if(params.get(PARAM_ENTE)!=null){
 			queryString+="and n.ente = :" + PARAM_ENTE + " ";
 		}
 		if(params.get(PARAM_AGENTE)!=null){
 			queryString+="and n.agente = :" + PARAM_AGENTE + " ";
+		}
+		if(params.get(PARAM_ALTRI_UTENTI)!=null){
+			queryString+=" and n.altriUtenti = :" + PARAM_ALTRI_UTENTI + " ";
 		}
 		
 		queryString+=" AND (n.dataInizioPubblicazione IS NULL OR current_date >= n.dataInizioPubblicazione )";
@@ -412,7 +427,9 @@ public class NewsOracleDAO extends EntitaVersionabileDAO<News> implements NewsDA
 		if(params.get(PARAM_AGENTE)!=null){
 			q.setParameter(PARAM_AGENTE, params.get(PARAM_AGENTE));
 		}
-		
+		if(params.get(PARAM_ALTRI_UTENTI)!=null){
+			q.setParameter(PARAM_ALTRI_UTENTI, params.get(PARAM_ALTRI_UTENTI));
+		}
 		List<News> news= q.getResultList();
 		return news;
 	}

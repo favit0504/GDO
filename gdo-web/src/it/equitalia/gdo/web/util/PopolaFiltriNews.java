@@ -15,10 +15,12 @@ import it.equitalia.gdo.web.businessdelegate.ServizioServiceBD;
 import it.equitalia.gdo.web.businessdelegate.TipoEnteServiceBD;
 import it.equitalia.gdo.web.util.GDOCostantiWeb.OPZIONI_STATO;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -42,6 +44,7 @@ public class PopolaFiltriNews {
 	private static String OPZIONI_PROVINCIA = "opzioniProvincia";
 	private static String OPZIONI_SERVIZIO_ENTE = "opzioniServizioEnte";
 	private static String OPZIONI_SERVIZIO_AGENTE = "opzioniServizioAgente";
+	private static String OPZIONI_SERVIZIO_ALTRI_UTENTI = "opzioniServizioAltriUtenti";
 	private static String OPZIONI_REGIONE = "opzioniRegione";
 	private static String OPZIONI_TIPO_ENTE = "opzioniTipoEnte";
 	private static String OPZIONI_RAGGRUPPAMENTO_SOCIETARIO = "opzioniRaggruppamentoSocietario";
@@ -53,9 +56,10 @@ public class PopolaFiltriNews {
 	protected Map<String,String> opzioniRegione = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniServizioEnte = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniServizioAgente = new LinkedHashMap<String,String>();
+	protected Map<String,String> opzioniServizioAltriUtenti = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniTipoEnte = new LinkedHashMap<String,String>();
 	protected Map<Integer,String> opzioniTipologiaUtente = new HashMap<Integer,String>();
-	protected  Map<Integer,String> opzioniStato = new HashMap<Integer,String>();
+	protected Map<Integer,String> opzioniStato = new HashMap<Integer,String>();
 	protected Map<Integer,String> opzioniAmbito = new LinkedHashMap<Integer,String>();
 
 	
@@ -92,6 +96,10 @@ public class PopolaFiltriNews {
 
 		if(!sessionMap.containsKey(OPZIONI_SERVIZIO_AGENTE)) {
 			popolaServizioAgente();
+		}
+		
+		if(!sessionMap.containsKey(OPZIONI_SERVIZIO_ALTRI_UTENTI)) {
+			popolaServizioAltriUtenti();
 		}
 		
 		if(!sessionMap.containsKey(OPZIONI_REGIONE)) {
@@ -164,6 +172,24 @@ public class PopolaFiltriNews {
 		}
 	}
 
+	private void popolaServizioAltriUtenti() throws BusinessException {
+		
+		ServizioServiceBD servizioService = new ServizioServiceBD();
+		List<ServizioBean> serviziAttivi = servizioService.recuperaServiziAltriUtenti();
+
+		if(serviziAttivi != null && serviziAttivi.size() > 0){
+			for (ServizioBean serv : serviziAttivi) {
+				opzioniServizioAltriUtenti.put(serv.getCodice(), serv.getCodice()+"  -  "+ serv.getDescrizione());
+			
+			}
+		}
+		if(opzioniServizioAltriUtenti != null && opzioniServizioAltriUtenti.size() > 0){
+		            	sessionMap.put(OPZIONI_SERVIZIO_ALTRI_UTENTI, opzioniServizioAltriUtenti);	
+			  
+		}
+	}
+	
+	
 	private void popolaRegione() throws BusinessException {
 
 		RegioneServiceBD regioneService = new RegioneServiceBD();
@@ -275,6 +301,32 @@ public class PopolaFiltriNews {
 			
 			if (!(oggettoInSessione instanceof Map))
 				throw new BusinessException("Errore durante il recupero della lista dei servizi agente");
+		
+			Map<String,String> result = (Map<String,String>) oggettoInSessione;
+			return result;
+		}
+	
+	}
+	
+	/**
+	 * Metodo usato nella modifica news per prendere la mappa chiave/valore dei servizi altri utenti
+	 */
+	@SuppressWarnings("unchecked")
+	public Map<String,String> getMappaServiziAltriUtenti() throws BusinessException {
+		
+		/* Campo gia` popolato? */
+		if (opzioniServizioAltriUtenti.size() > 0)
+		{
+			return  opzioniServizioAltriUtenti;	
+		}
+		else 
+		/* Campo opzioniServizio inizializzato ma vuoto, vado a recuperarlo dalla sessione
+		   [ASSUNZIONE che sia stato gia` popolato in precedenza] */
+		{
+			Object oggettoInSessione = sessionMap.get(OPZIONI_SERVIZIO_ALTRI_UTENTI);
+			
+			if (!(oggettoInSessione instanceof Map))
+				throw new BusinessException("Errore durante il recupero della lista dei servizi degli altri utenti");
 		
 			Map<String,String> result = (Map<String,String>) oggettoInSessione;
 			return result;

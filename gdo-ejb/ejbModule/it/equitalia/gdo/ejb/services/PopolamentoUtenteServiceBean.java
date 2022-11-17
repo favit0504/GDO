@@ -18,6 +18,7 @@ import it.equitalia.gdo.dao.db2.EnteDB2DAO;
 import it.equitalia.gdo.dao.db2.ProvinciaDB2DAO;
 import it.equitalia.gdo.dao.db2.RaggruppamentoSocietarioDB2DAO;
 import it.equitalia.gdo.dao.db2.RegioneDB2DAO;
+import it.equitalia.gdo.dao.db2.ServizioDB2DAO;
 import it.equitalia.gdo.dao.exceptions.DataAccessException;
 import it.equitalia.gdo.dao.model.Ente;
 import it.equitalia.gdo.dao.model.Provincia;
@@ -78,6 +79,10 @@ public class PopolamentoUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 					popolaTipologiaEnte(utente);					
 					popolaProvinceEnte(utente);
 					popolaRegioniEnte(utente);
+				}else if (utente.getTipologiaUtente()!=TipologiaUtente.ENTE && utente.getTipologiaUtente()!=TipologiaUtente.AGENTE  && utente.getTipologiaUtente()!=TipologiaUtente.EQUITALIA){				
+					
+					popolaServiziUtente(utente);					
+					
 				}
 
 				return utente;
@@ -153,11 +158,20 @@ public class PopolamentoUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 	public UtenteBean popolaServiziUtente(UtenteBean utente) throws BusinessException {
 		
 		try{
-			ServizioDAOInterface oracleDAO = new ServizioOracleDAO();
-			factoryType = DAOFactoryType.ORACLE_GEU;
-			oracleDAO.setEntityManager(getEntityManager());
-
-			List<String> listaIdServizi = oracleDAO.getListaServiziAttiviUtenteEnteoAgente(utente.getUsd());
+			List<String> listaIdServizi = new ArrayList<String>();
+			ServizioDAOInterface oracleDAO = new ServizioOracleDAO();	
+			ServizioDAOInterface DB2DAO = new ServizioDB2DAO();
+    
+			if(!utente.getUsd().startsWith(Costanti.TipologiaUtente.AGENTE.getValue()) && !utente.getUsd().startsWith(Costanti.TipologiaUtente.EQUITALIA.getValue()) && !utente.getUsd().startsWith(Costanti.TipologiaUtente.ENTE.getValue())){								
+				factoryType = DAOFactoryType.DB2;
+				DB2DAO.setEntityManager(getEntityManager());
+				listaIdServizi =DB2DAO.getListaServiziAttiviAltriUtenti(utente.getUsd());
+			}else{				
+				factoryType = DAOFactoryType.ORACLE_GEU;
+				oracleDAO.setEntityManager(getEntityManager());
+				listaIdServizi = oracleDAO.getListaServiziAttiviUtenteEnteoAgente(utente.getUsd());
+			}
+                  			
 			//nota: a differenza delle altre liste, qua passo
 			//direttamente la listarestituita dal DAO, 
 			//che non e ` un ArrayList
@@ -247,7 +261,7 @@ public class PopolamentoUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 			db2DAO.setEntityManager(getEntityManager());
 
 			String tipologiaEnte = (db2DAO.getTipologiaEnte(BeanToModel.execute(utente.getEnte())));
-			utente.setTipologiaEnte(tipologiaEnte);
+			utente.setTipologiaEnte(tipologiaEnte != null ? tipologiaEnte.trim() : tipologiaEnte);
 
 			return utente;
 
@@ -295,6 +309,8 @@ public class PopolamentoUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 			} else if(utente.getUsd().startsWith(Costanti.TipologiaUtente.EQUITALIA.getValue())){
 				utente.setTipologiaUtente(Costanti.TipologiaUtente.EQUITALIA);
 
+			} else if(!utente.getUsd().startsWith(Costanti.TipologiaUtente.AGENTE.getValue()) && !utente.getUsd().startsWith(Costanti.TipologiaUtente.EQUITALIA.getValue()) && !utente.getUsd().startsWith(Costanti.TipologiaUtente.ENTE.getValue())){				
+				utente.setTipologiaUtente(Costanti.TipologiaUtente.ALTRIUTENTI);
 			}
 
 			return utente;

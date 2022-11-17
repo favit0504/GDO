@@ -22,7 +22,7 @@ public class ServizioOracleDAO implements ServizioDAOInterface  {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<String> getListaServiziAttiviUtenteEnteoAgente(String chiaveUtente) {
+	public List<String> getListaServiziAttiviUtenteEnteoAgente (String chiaveUtente) {
 		String sqlString = 	" select DISTINCT sa.ACRONIMO as ID_SERVIZIO " +
 							" from WE1_SOGG_APPL sa " +  
 						   	" where sa.C_CLIENTE_WEB = ( select C_CLIENTE_WEB from WE1_SOGGETTO SOGG where SOGG.USD = ? ) " +
@@ -45,6 +45,11 @@ public class ServizioOracleDAO implements ServizioDAOInterface  {
 
 	public List<Servizio> getListaServiziAgente() {
 		// Metodo che va su DB2; implementato in ServizioDB2DAO.
+		return null;
+	}
+	
+	public List<Servizio> getListaServiziAltriUtenti() {
+		// TODO Stub di metodo generato automaticamente
 		return null;
 	}
 
@@ -84,6 +89,11 @@ public class ServizioOracleDAO implements ServizioDAOInterface  {
 
 	public Servizio update(Servizio t) {
 		//Stub di metodo generato automaticamente
+		return null;
+	}
+
+	public List<String> getListaServiziAttiviAltriUtenti(String chiaveUtente) {
+		// TODO Stub di metodo generato automaticamente
 		return null;
 	}
 

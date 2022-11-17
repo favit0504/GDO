@@ -112,6 +112,7 @@ public class GDOMessaggi {
 	public final static String ERRORE_RECUPERA_SERVIZIO = "error.service.recupera.servizio";
 	public final static String ERRORE_RECUPERA_SERVIZIO_ENTE = "error.service.recupera.servizio.ente";
 	public final static String ERRORE_RECUPERA_SERVIZIO_AGENTE = "error.service.recupera.servizio.agente";
+	public final static String ERRORE_RECUPERA_SERVIZIO_ALTRI_UTENTI = "error.service.recupera.servizio.altriUtenti";
 
 	//ERRORI GESTIONE ENTI
 	public final static String ERRORE_RECUPERA_ENTE = "error.service.recupera.ente";

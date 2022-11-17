@@ -13,8 +13,8 @@ import it.equitalia.gdo.commons.valueobjects.UtenteBean;
 import it.equitalia.gdo.dao.AbstractDAOFactory;
 import it.equitalia.gdo.dao.GenericAbstractDao;
 import it.equitalia.gdo.dao.model.generic.AbstractFiltro;
-import it.equitalia.gdo.dao.model.generic.GenericType;
 import it.equitalia.gdo.dao.model.generic.AbstractFiltro.TIPO_FILTRO;
+import it.equitalia.gdo.dao.model.generic.GenericType;
 import it.equitalia.gdo.ejb.aspects.ProfilingInterceptor;
 
 import java.util.ArrayList;
@@ -66,7 +66,8 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 		
 		if(newsBean != null){
 			
-			visibile = visibile && valutaTipologiaUtente(utente, newsBean); 			
+			visibile = visibile && valutaTipologiaUtente(utente, newsBean); 
+//			visibile = visibile && valutaTipologiaAltriUtenti(utente, newsBean);
 			visibile = visibile && valutaServizi(utente, newsBean);			
 			visibile = visibile && valutaProvince(utente, newsBean);
 			visibile = visibile && valutaRegioni(utente, newsBean);						
@@ -125,22 +126,34 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 	}
 	
 	public boolean valutaTipologiaUtente(UtenteBean utente, NewsBean newsBean) throws BusinessException {
-		
 		if (utente.getTipologiaUtente() == null)
-			throw new BusinessException("Utente non valido");
+			throw new BusinessException("Utente non valido");	
 		
-		switch (utente.getTipologiaUtente()) {				
-			case EQUITALIA:
-				return true;
-			case ENTE:
-				return newsBean.getEnte();
-			case AGENTE:
-				return newsBean.getAgente();
-			default:
-				throw new BusinessException("Utente non valido");
+		if(utente.getTipologiaUtente()!=TipologiaUtente.EQUITALIA && utente.getTipologiaUtente()!=TipologiaUtente.AGENTE && utente.getTipologiaUtente()!=TipologiaUtente.ENTE)
+			return newsBean.getAltriUtenti();
+		else		
+				switch (utente.getTipologiaUtente()) {				
+					case EQUITALIA:
+						return true;
+					case ENTE:
+						return newsBean.getEnte();
+					case AGENTE:
+						return newsBean.getAgente();
+					default:
+						throw new BusinessException("Utente non valido");
 		}
-		
 	}
+	
+	
+	
+//	public boolean valutaTipologiaAltriUtenti(UtenteBean utente, NewsBean newsBean) throws BusinessException {
+//		if (utente.getTipologiaUtente() == null)
+//			throw new BusinessException("Utente non valido");	
+//		if(utente.getTipologiaUtente()!=TipologiaUtente.EQUITALIA && utente.getTipologiaUtente()!=TipologiaUtente.AGENTE && utente.getTipologiaUtente()!=TipologiaUtente.ENTE)
+//			newsBean.getAltriUtenti();
+//		
+//		return false;
+//	}
 	
 	public boolean valutaEnte(UtenteBean utente, NewsBean newsBean) {
 		if(utente.getTipologiaUtente()==TipologiaUtente.EQUITALIA || utente.getTipologiaUtente()==TipologiaUtente.AGENTE)
@@ -235,7 +248,9 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 			case FiltroServizioAgente:
 				return utente.getServizi();
 			case FiltroServizioEnte:
-				return utente.getServizi();			
+				return utente.getServizi();	
+			case FiltroServizioAltriUtenti:
+				return utente.getServizi();	
 			case FiltroTipologiaEnte:
 				List<String> tipologiaEnte = new ArrayList<String>();
 				tipologiaEnte.add(utente.getTipologiaEnte());
@@ -278,7 +293,11 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 		case FiltroServizioEnte:
 			if(bean.getFiltroServizioEnte()!=null)
 				filtri = bean.getFiltroServizioEnte().getValori();
-			break;			
+			break;		
+		case FiltroServizioAltriUtenti:
+			if(bean.getFiltroServizioAltriUtenti()!=null)
+				filtri = bean.getFiltroServizioAltriUtenti().getValori();
+			break;
 		case FiltroTipologiaEnte:
 			if(bean.getFiltroTipologiaEnte()!=null)
 				filtri = bean.getFiltroTipologiaEnte().getValori();
@@ -293,9 +312,16 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 
 	@Interceptors({ProfilingInterceptor.class})
 	public boolean valutaServizi(UtenteBean utente, NewsBean newsBean) {
+		AbstractFiltro.TIPO_FILTRO tipo = null;
 		if(utente.getTipologiaUtente()==TipologiaUtente.EQUITALIA)
 			return true;
-		AbstractFiltro.TIPO_FILTRO tipo = utente.getTipologiaUtente()==TipologiaUtente.AGENTE?TIPO_FILTRO.FiltroServizioAgente:TIPO_FILTRO.FiltroServizioEnte;
+		if(utente.getTipologiaUtente()==TipologiaUtente.AGENTE){
+			tipo = TIPO_FILTRO.FiltroServizioAgente;
+		}else if(utente.getTipologiaUtente()==TipologiaUtente.ENTE){
+			tipo = TIPO_FILTRO.FiltroServizioEnte;
+		}else if(utente.getTipologiaUtente()!=TipologiaUtente.EQUITALIA && utente.getTipologiaUtente()!=TipologiaUtente.AGENTE && utente.getTipologiaUtente()!=TipologiaUtente.ENTE) {
+			tipo = TIPO_FILTRO.FiltroServizioAltriUtenti;
+		}
 		return valutaFiltroStringa(utente, newsBean, tipo);
 	}
 
@@ -482,6 +508,8 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 	@Interceptors({ProfilingInterceptor.class})
 	public boolean valutaServizi(UtenteBean utente, DocumentoBean documentoBean) {
 		if(utente.getTipologiaUtente()==TipologiaUtente.EQUITALIA)
+			return true;
+		if(utente.getTipologiaUtente()!=TipologiaUtente.EQUITALIA && utente.getTipologiaUtente()!=TipologiaUtente.AGENTE && utente.getTipologiaUtente()!=TipologiaUtente.ENTE)
 			return true;
 		AbstractFiltro.TIPO_FILTRO tipo = utente.getTipologiaUtente()==TipologiaUtente.AGENTE?TIPO_FILTRO.FiltroServizioAgente:TIPO_FILTRO.FiltroServizioEnte;
 		return valutaFiltroStringa(utente, documentoBean, tipo);

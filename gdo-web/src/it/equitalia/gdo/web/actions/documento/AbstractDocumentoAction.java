@@ -2,9 +2,9 @@ package it.equitalia.gdo.web.actions.documento;
 
 
 
+import it.equitalia.gdo.commons.utils.Costanti.OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO;
 import it.equitalia.gdo.commons.utils.GDOConfig;
 import it.equitalia.gdo.commons.utils.GDOMessaggi;
-import it.equitalia.gdo.commons.utils.Costanti.OPZIONI_TIPOLOGIA_UTENTE;
 import it.equitalia.gdo.commons.valueobjects.DocumentoBean;
 import it.equitalia.gdo.commons.valueobjects.SezioneBean;
 import it.equitalia.gdo.web.actions.AbstractBaseAction;
@@ -52,7 +52,7 @@ public abstract class AbstractDocumentoAction extends AbstractBaseAction {
 
 	//liste comuni a form/pagina di dettaglio e form/pagina di ricerca
 	protected static Map<Integer,String> opzioniStato = new HashMap<Integer,String>();
-	protected static Map<Integer,String> opzioniTipologiaUtente = new HashMap<Integer,String>();
+	protected static Map<Integer,String> opzioniTipologiaUtenteDocumento = new HashMap<Integer,String>();
 	protected List<Integer> tipologiaUtenteCheck;
 	
 	/* Metodi get e set */
@@ -81,11 +81,11 @@ public abstract class AbstractDocumentoAction extends AbstractBaseAction {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Map<Integer,String> getOpzioniTipologiaUtente() {
-		if(getSession().containsKey("opzioniTipologiaUtente")){
-			opzioniTipologiaUtente = (Map<Integer, String>) getSession().get("opzioniTipologiaUtente");
+	public Map<Integer,String> getOpzioniTipologiaUtenteDocumento() {
+		if(getSession().containsKey("opzioniTipologiaUtenteDocumento")){
+			opzioniTipologiaUtenteDocumento = (Map<Integer, String>) getSession().get("opzioniTipologiaUtenteDocumento");
 		}
-		return opzioniTipologiaUtente;
+		return opzioniTipologiaUtenteDocumento;
 		
 	}
 	
@@ -125,9 +125,9 @@ public abstract class AbstractDocumentoAction extends AbstractBaseAction {
 		if(tipologiaUtenteCheck != null && tipologiaUtenteCheck.size() > 0){
 			
 		//	FiltroTipologiaBean tipologiaUtente = new FiltroTipologiaBean();
-			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()))
+			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.SOLO_AGENTE.getValue()))
 				documento.setAgente(true);
-			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue()))
+			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.SOLO_ENTE.getValue()))
 				documento.setEnte(true);								
 		}
 	}

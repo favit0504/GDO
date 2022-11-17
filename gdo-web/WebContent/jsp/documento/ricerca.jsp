@@ -36,7 +36,7 @@
 
 				                     	<s:checkboxlist value="defaultValue" name="statoDocumentoCheck" cssClass="radio-form" label="Stato" list="opzioniStato"></s:checkboxlist> </br>
 				                     	
-				                     	<s:checkboxlist name="tipologiaUtenteCheck" cssClass="radio-form" label="Destinatari del documento" list="opzioniTipologiaUtente"></s:checkboxlist>
+				                     	<s:checkboxlist name="tipologiaUtenteCheck" cssClass="radio-form" label="Destinatari del documento" list="opzioniTipologiaUtenteDocumento"></s:checkboxlist>
 				                       
 				                       
 				                        <div class="clearfix">

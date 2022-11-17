@@ -25,12 +25,14 @@ public class NewsBean extends BeanVersionabile implements Serializable, BeanConF
 	private String visualizzaPopUpDescr;
 	private Boolean svecchiata;		
 	private Boolean agente;
+	private Boolean altriUtenti;
 	private FiltroEnteBean filtroEnte;
 	private FiltroSocietaBean filtroSocieta;
 	private FiltroTipologiaEnteBean filtroTipologiaEnte;
 	//private FiltroTipologiaBean filtroTipologia;
 	private FiltroServizioEnteBean filtroServizioEnte;
 	private FiltroServizioAgenteBean filtroServizioAgente;
+	private FiltroServizioAltriUtentiBean filtroServizioAltriUtenti;
 	private FiltroRegioneAgenteBean filtroRegioneAgente;
 	private FiltroRegioneEnteBean filtroRegioneEnte;	
 	private FiltroProvinciaEnteBean filtroProvinciaEnte;
@@ -55,6 +57,14 @@ public class NewsBean extends BeanVersionabile implements Serializable, BeanConF
 
 	public void setAgente(Boolean agente) {
 		this.agente = agente;
+	}
+
+	public Boolean getAltriUtenti() {
+		return altriUtenti;
+	}
+
+	public void setAltriUtenti(Boolean altriUtenti) {
+		this.altriUtenti = altriUtenti;
 	}
 
 	public String getTitolo() {
@@ -169,6 +179,16 @@ public class NewsBean extends BeanVersionabile implements Serializable, BeanConF
 	public void setFiltroServizioAgente(
 			FiltroServizioAgenteBean filtroServizioAgente) {
 		this.filtroServizioAgente = filtroServizioAgente;
+	}
+	
+
+	public FiltroServizioAltriUtentiBean getFiltroServizioAltriUtenti() {
+		return filtroServizioAltriUtenti;
+	}
+
+	public void setFiltroServizioAltriUtenti(
+			FiltroServizioAltriUtentiBean filtroServizioAltriUtenti) {
+		this.filtroServizioAltriUtenti = filtroServizioAltriUtenti;
 	}
 
 	public AllegatoBean getAllegato() {

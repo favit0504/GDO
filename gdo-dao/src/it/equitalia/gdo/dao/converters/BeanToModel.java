@@ -16,6 +16,7 @@ import it.equitalia.gdo.commons.valueobjects.FiltroRegioneAgenteBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroRegioneBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroRegioneEnteBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioAgenteBean;
+import it.equitalia.gdo.commons.valueobjects.FiltroServizioAltriUtentiBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioEnteBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroSocietaBean;
@@ -36,6 +37,7 @@ import it.equitalia.gdo.dao.model.FiltroRegioneAgente;
 import it.equitalia.gdo.dao.model.FiltroRegioneEnte;
 import it.equitalia.gdo.dao.model.FiltroServizio;
 import it.equitalia.gdo.dao.model.FiltroServizioAgente;
+import it.equitalia.gdo.dao.model.FiltroServizioAltriUtenti;
 import it.equitalia.gdo.dao.model.FiltroServizioEnte;
 import it.equitalia.gdo.dao.model.FiltroSocieta;
 import it.equitalia.gdo.dao.model.FiltroTipologiaEnte;
@@ -110,7 +112,12 @@ public class BeanToModel {
 		if (bean.getFiltroServizioAgente() != null) {
 			FiltroServizioAgente filtro = execute(bean.getFiltroServizioAgente());
 			list.add( filtro );
-		}					
+		}	
+		
+		if (bean.getFiltroServizioAltriUtenti() != null) {
+			FiltroServizioAltriUtenti filtro = execute(bean.getFiltroServizioAltriUtenti());
+			list.add( filtro );
+		}
 		
 		if (bean.getFiltroRegioneAgente() != null) {
 			FiltroRegioneAgente filtro = execute(bean.getFiltroRegioneAgente());
@@ -274,6 +281,7 @@ public class BeanToModel {
 		
 		model.setEnte(newsBean.getEnte());
 		model.setAgente(newsBean.getAgente());
+		model.setAltriUtenti(newsBean.getAltriUtenti());
 		model.setTitolo(newsBean.getTitolo());
 		model.setTesto(newsBean.getTesto());
 		model.setStato(newsBean.getStato());
@@ -390,7 +398,14 @@ public class BeanToModel {
 		return fse;		
 	}
 	
-
+	public static FiltroServizioAltriUtenti execute(FiltroServizioAltriUtentiBean bean)
+	{
+		FiltroServizioAltriUtenti fsa = new FiltroServizioAltriUtenti();
+		convertiFiltroServizio(fsa, bean);
+		fsa.setTipoFiltro(AbstractFiltro.TIPO_FILTRO.FiltroServizioAltriUtenti.name());
+		return fsa;		
+	}
+	
 	
 	public static FiltroSocieta execute(FiltroSocietaBean bean) {
 

@@ -32,5 +32,9 @@ public final class ServizioServiceBD {
 	public List<ServizioBean> recuperaServiziAgente() throws BusinessException {
 		return service.recuperaServiziAgente();
 	}
+	
+	public List<ServizioBean> recuperaServiziAltriUtenti() throws BusinessException {
+		return service.recuperaServiziAltriUtenti();
+	}
 
 }

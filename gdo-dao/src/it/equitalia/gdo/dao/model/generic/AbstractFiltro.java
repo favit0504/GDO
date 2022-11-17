@@ -23,12 +23,17 @@ private static final String SEQUENCE = "SEQ_ID_FILTRO";
 		
 	}
 	public static enum TIPO_FILTRO {
-		FiltroEnte, FiltroServizioEnte, FiltroServizioAgente, FiltroSocieta, 
+		FiltroEnte, 
+		FiltroServizioEnte, 
+		FiltroServizioAgente, 
+		FiltroSocieta, 
+		FiltroServizioAltriUtenti,
 		//FiltroTipologia,
-		FiltroTipologiaEnte,FiltroRegioneAgente, FiltroRegioneEnte,FiltroProvinciaEnte,
-		FiltroAmbito
-		
-		; 
+		FiltroTipologiaEnte,
+		FiltroRegioneAgente, 
+		FiltroRegioneEnte,
+		FiltroProvinciaEnte,
+		FiltroAmbito; 
 	}
 	
 	@Id

@@ -22,5 +22,7 @@ public class ServizioBean implements Serializable {
 		this.descrizione = descrizione;
 	}
 	private String descrizione;
+	
+	
 
 }

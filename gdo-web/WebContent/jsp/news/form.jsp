@@ -193,6 +193,21 @@ function mostraWarningVisualizzaPopUp(){
 			                        </div>
 			                       
 			                   </section>
+			                   
+			                     <h3 style="display:none;">Altri utenti</h3>
+			                    <section style="display:none;">
+			                     	<div class="sottosteps altriUtenti clearfix">
+					                	<ul>
+						                	<li class="current"><a name="altriUtenti1"  id="tab_visibilita_altriUtenti_0">Servizio</a></li>
+					                    </ul>
+				                    </div>
+			                       <div id="content_tab_visibilita_altriUtenti_0"  class="content_tab_sottosteps first">
+				                         <s:doubleselect disabled="%{isModalitaVisualizza()}" list="opzioniServizioAltriUtenti" name="servizio_altriUtenti_options" id="servizio_altriUtenti_options"
+				   						 doubleList="opzioniScelteServizioAltriUtenti" doubleId="servizio_altriUtenti_selected" 
+				   						 doubleName="news.filtroServizioAltriUtenti.valori"></s:doubleselect>
+			                        </div>
+			                    </section>
+			
 			
 								<h3 style="display:none;">Allegato</h3>
 			                    <section style="display:none;">
@@ -370,7 +385,9 @@ $(function () {
 			    this.setAttribute("selected","selected");
 			});
 			
-
+			$("#servizio_altriUtenti_selected > option").each(function() {
+			    this.setAttribute("selected","selected");
+			});		
 			
             $("#form-news").submit();
          }
@@ -403,6 +420,7 @@ $(function () {
     	
    	creaSottoWizard("enti");
    	creaSottoWizard("agenti");
+   	creaSottoWizard("altriUtenti");
    	
    	function eliminaBottoni() {       	
        	$("a[href*=#next]").remove( );	

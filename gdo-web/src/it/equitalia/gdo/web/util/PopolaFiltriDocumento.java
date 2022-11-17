@@ -1,7 +1,7 @@
 package it.equitalia.gdo.web.util;
 
 import it.equitalia.gdo.commons.exception.BusinessException;
-import it.equitalia.gdo.commons.utils.Costanti.OPZIONI_TIPOLOGIA_UTENTE;
+import it.equitalia.gdo.commons.utils.Costanti.OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO;
 import it.equitalia.gdo.commons.utils.Costanti.RaggruppamentoSocietario;
 import it.equitalia.gdo.commons.valueobjects.AmbitoBean;
 import it.equitalia.gdo.commons.valueobjects.ProvinciaBean;
@@ -37,7 +37,7 @@ public class PopolaFiltriDocumento {
 	
 	SessionMap<String, Object> sessionMap;
 
-	private static String OPZIONI_TIPOLOGIA_UTENTE_KEY = "opzioniTipologiaUtente";
+	private static String OPZIONI_TIPOLOGIA_UTENTE_KEY = "opzioniTipologiaUtenteDocumento";
 	private static String OPZIONI_STATO_DOCUMENTI_KEY = "opzioniStatoDocumenti";
 	private static String OPZIONI_PROVINCIA = "opzioniProvincia";
 	private static String OPZIONI_SERVIZIO_ENTE = "opzioniServizioEnte";
@@ -54,7 +54,7 @@ public class PopolaFiltriDocumento {
 	protected Map<String,String> opzioniServizioEnte = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniServizioAgente = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniTipoEnte = new LinkedHashMap<String,String>();
-	protected Map<Integer,String> opzioniTipologiaUtente = new HashMap<Integer,String>();
+	protected Map<Integer,String> opzioniTipologiaUtenteDocumento = new HashMap<Integer,String>();
 	protected Map<Integer,String> opzioniStatoDocumenti = new HashMap<Integer,String>();
 	protected Map<Integer,String> opzioniAmbito = new LinkedHashMap<Integer,String>();
 
@@ -216,12 +216,12 @@ public class PopolaFiltriDocumento {
 	}
 
 	private void popolaTipologiaUtente() {
-		for(OPZIONI_TIPOLOGIA_UTENTE o : OPZIONI_TIPOLOGIA_UTENTE.values())						
-			opzioniTipologiaUtente.put(o.getValue(), o.getDescrizione());
+		for(OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO o : OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.values())						
+			opzioniTipologiaUtenteDocumento.put(o.getValue(), o.getDescrizione());
 
-		sessionMap.put(OPZIONI_TIPOLOGIA_UTENTE_KEY, opzioniTipologiaUtente);
+		sessionMap.put(OPZIONI_TIPOLOGIA_UTENTE_KEY, opzioniTipologiaUtenteDocumento);
 	}
-
+	
 	private void popolaStato() {
 		for(OPZIONI_STATO_DOCUMENTI o : OPZIONI_STATO_DOCUMENTI.values())						
 			opzioniStatoDocumenti.put(o.getValue(), o.getDescrizione());

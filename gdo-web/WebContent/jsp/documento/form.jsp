@@ -43,7 +43,7 @@
 			                        		                        			                        				                      
 			   						<s:radio disabled="%{isModalitaVisualizza()}" name="documento.stato" cssClass="radio-form" label="Stato" list="opzioniStato" />			   									   						
 			    					
-			                        <s:checkboxlist disabled="%{isModalitaVisualizza()}" name="tipologiaUtenteCheck" cssClass="radio-form" label="Destinatari del documento*" list="opzioniTipologiaUtente"></s:checkboxlist>
+			                        <s:checkboxlist disabled="%{isModalitaVisualizza()}" name="tipologiaUtenteCheck" cssClass="radio-form" label="Destinatari del documento*" list="opzioniTipologiaUtenteDocumento"></s:checkboxlist>
 			                        
 			                        <br/><br/>
 			                        

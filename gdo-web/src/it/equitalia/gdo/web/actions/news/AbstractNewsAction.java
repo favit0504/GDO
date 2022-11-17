@@ -164,13 +164,15 @@ public abstract class AbstractNewsAction extends AbstractBaseAction {
 	protected void impostaTipologiaUtente() {
 		news.setEnte(false);
 		news.setAgente(false);
+		news.setAltriUtenti(false);
 		if(tipologiaUtenteCheck != null && tipologiaUtenteCheck.size() > 0){
-			
-		//	FiltroTipologiaBean tipologiaUtente = new FiltroTipologiaBean();
+		
 			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()))
 					news.setAgente(true);
 			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue()))
-					news.setEnte(true);								
+					news.setEnte(true);	
+			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getValue()))
+				    news.setAltriUtenti(true);
 		}
 	}
 

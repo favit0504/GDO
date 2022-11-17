@@ -170,14 +170,17 @@ public class NewsServiceBean extends ServiceWithDAOFactory<NewsDAOInterface> imp
 				if(news.getDataFinePubblicazione() != null){
 					params.put(NewsDAOInterface.PARAM_DATA_FINE_PUBBLICAZIONE, news.getDataFinePubblicazione());	
 				}
-				if((news.getEnte() != null && news.getAgente() != null)){
-					if(!(news.getEnte() && news.getAgente())){
+				if((news.getEnte() != null && news.getAgente() != null && news.getAltriUtenti() != null)){
+					if(!(news.getEnte() && news.getAgente() && news.getAltriUtenti())){
 						if(news.getEnte()){
 							params.put(NewsDAOInterface.PARAM_ENTE, news.getEnte());
 						}
 						if(news.getAgente()){
 							params.put(NewsDAOInterface.PARAM_AGENTE, news.getAgente());
 						}	
+						if(news.getAltriUtenti()){
+							params.put(NewsDAOInterface.PARAM_ALTRI_UTENTI, news.getAltriUtenti());
+						}
 					}
 				}
 				if(news.getVisualizzaPopUp() != null)
@@ -268,6 +271,8 @@ public class NewsServiceBean extends ServiceWithDAOFactory<NewsDAOInterface> imp
 				params.put(NewsDAOInterface.PARAM_ENTE, true);
 			} else if(tipologiaUtente.getValue().equals(TipologiaUtente.AGENTE.getValue())){
 				params.put(NewsDAOInterface.PARAM_AGENTE, true);
+			} else if(!tipologiaUtente.getValue().equals(TipologiaUtente.AGENTE.getValue()) && !tipologiaUtente.getValue().equals(TipologiaUtente.ENTE.getValue())){
+				params.put(NewsDAOInterface.PARAM_ALTRI_UTENTI, true);
 			}
 			NewsDAOInterface newsDao = getDAO();
 
@@ -504,6 +509,23 @@ public class NewsServiceBean extends ServiceWithDAOFactory<NewsDAOInterface> imp
 	protected NewsDAOInterface getSpecificDAO(AbstractDAOFactory adf) {
 		return adf.getNewsDAO();
 	}
+
+
+
+
+
+//	@Override
+//	public List<NewsBean> recuperaNewsAttivePerAltriUtenti(
+//			TipologiaUtente tipologiaUtente) throws BusinessException {
+//		// TODO Stub di metodo generato automaticamente
+//		return null;
+//	}
+
+
+
+
+
+
 
 
 }

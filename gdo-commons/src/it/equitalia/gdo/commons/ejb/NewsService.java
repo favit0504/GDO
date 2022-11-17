@@ -69,6 +69,16 @@ b	 * Recupera dal database la news indicata senza eventuali filtri associati; se
 	List<NewsBean> recuperaNewsAttivePerUtente(TipologiaUtente tipologiaUtente) throws BusinessException;
 	
 	/**
+	 * Recupera dal database tutte le news valide e attive con la tipologia utente
+	 * corrispondente a quella passata come argomento
+	 * 
+	 * @param tipologiaUtente
+	 * @return
+	 * @throws BusinessException
+	 */
+//	List<NewsBean> recuperaNewsAttivePerAltriUtenti(TipologiaUtente tipologiaUtente) throws BusinessException;
+	
+	/**
 	 * Recupera dal database tutti i file delle news invalidati e da svecchiare.
 	 * 
 	 * @return

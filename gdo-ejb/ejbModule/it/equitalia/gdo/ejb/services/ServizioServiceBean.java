@@ -84,6 +84,26 @@ public class ServizioServiceBean extends ServiceWithDAOFactory<ServizioDAOInterf
 
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	@Interceptors({ProfilingInterceptor.class})
+	public List<ServizioBean> recuperaServiziAltriUtenti() throws BusinessException {
+		try{
+			List<Servizio> servizi = getDAO().getListaServiziAltriUtenti();
+			List<ServizioBean> bean = new ArrayList<ServizioBean>();
+			popolaListaBean(servizi, bean);
+			return bean;
+
+		} catch (DataAccessException dae) {
+			ctx.setRollbackOnly();
+			logger.error(dae.getMessage(), dae);
+			throw new BusinessException(dae.getMessage());
+		} catch(Throwable t){
+			logger.error(t, t);
+			throw new BusinessException(GDOMessaggi.getMessaggio(GDOMessaggi.ERRORE_RECUPERA_SERVIZIO_ALTRI_UTENTI), t);
+		}
+
+	}
+	
 	private void popolaListaBean(List<Servizio> servizi, List<ServizioBean> bean) {
 		if(servizi.size()>0)
 			for (Servizio s: servizi)

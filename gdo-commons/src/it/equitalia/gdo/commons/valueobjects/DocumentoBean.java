@@ -244,5 +244,16 @@ public class DocumentoBean extends BeanVersionabile implements Serializable, Bea
 		
 	}
 
+	public FiltroServizioAltriUtentiBean getFiltroServizioAltriUtenti() {
+		// TODO Stub di metodo generato automaticamente
+		return null;
+	}
+
+	public void setFiltroServizioAltriUtenti(
+			FiltroServizioAltriUtentiBean filtroServizio) {
+		// TODO Stub di metodo generato automaticamente
+		
+	}
+
 
 }

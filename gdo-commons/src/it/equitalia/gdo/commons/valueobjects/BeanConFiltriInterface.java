@@ -28,6 +28,10 @@ public interface BeanConFiltriInterface {
 	
 	public void setFiltroServizioEnte(FiltroServizioEnteBean filtroServizio);
 	
+	public FiltroServizioAltriUtentiBean getFiltroServizioAltriUtenti();
+	
+	public void setFiltroServizioAltriUtenti(FiltroServizioAltriUtentiBean filtroServizio);
+	
 	public FiltroServizioAgenteBean getFiltroServizioAgente();
 	
 	public void setFiltroServizioAgente(FiltroServizioAgenteBean filtroServizio);

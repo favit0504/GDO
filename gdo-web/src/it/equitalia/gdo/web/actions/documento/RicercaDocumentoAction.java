@@ -1,6 +1,7 @@
 package it.equitalia.gdo.web.actions.documento;
 
 import it.equitalia.gdo.commons.utils.Costanti;
+import it.equitalia.gdo.commons.utils.Costanti.OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO;
 import it.equitalia.gdo.commons.utils.GDOMessaggi;
 import it.equitalia.gdo.commons.utils.Costanti.OPZIONI_TIPOLOGIA_UTENTE;
 import it.equitalia.gdo.commons.valueobjects.DocumentoBean;
@@ -82,13 +83,13 @@ public class RicercaDocumentoAction extends AbstractDocumentoAction implements P
 		}
 
 		if(tipologiaUtenteCheck != null && !tipologiaUtenteCheck.isEmpty()){
-			if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()) && tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue()))
+			if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.SOLO_AGENTE.getValue()) && tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.SOLO_ENTE.getValue()))
 			{
 				campiValorizzati = true;
 				documento.setAgente(null);
 				documento.setEnte(null);
 			}
-			else if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()) ){
+			else if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.SOLO_AGENTE.getValue()) ){
 				campiValorizzati = true;
 				documento.setAgente(true);
 				documento.setEnte(false);
@@ -143,9 +144,9 @@ public class RicercaDocumentoAction extends AbstractDocumentoAction implements P
 		if(tipologiaUtenteCheck != null && tipologiaUtenteCheck.size() > 0){
 
 			// FiltroTipologiaBean tipologiaUtente = new FiltroTipologiaBean();
-			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()))
+			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.SOLO_AGENTE.getValue()))
 				documento.setAgente(true);
-			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue()))
+			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.SOLO_ENTE.getValue()))
 				documento.setEnte(true);								
 		}
 	}

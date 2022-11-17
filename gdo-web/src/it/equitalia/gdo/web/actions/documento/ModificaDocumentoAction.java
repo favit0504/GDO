@@ -1,6 +1,7 @@
 package it.equitalia.gdo.web.actions.documento;
 
 import it.equitalia.gdo.commons.exception.BusinessException;
+import it.equitalia.gdo.commons.utils.Costanti.OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO;
 import it.equitalia.gdo.commons.utils.GDOMessaggi;
 import it.equitalia.gdo.commons.utils.Costanti.OPZIONI_TIPOLOGIA_UTENTE;
 import it.equitalia.gdo.commons.valueobjects.DocumentoBean;
@@ -63,9 +64,9 @@ public class ModificaDocumentoAction extends AbstractFormDocumentoAction impleme
 				try {
 					tipologiaUtenteCheck = new ArrayList<Integer>();
 					if (documento.getEnte())
-						tipologiaUtenteCheck.add(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue());
+						tipologiaUtenteCheck.add(OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.SOLO_ENTE.getValue());
 					if (documento.getAgente())
-						tipologiaUtenteCheck.add(OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue());
+						tipologiaUtenteCheck.add(OPZIONI_TIPOLOGIA_UTENTE_DOCUMENTO.SOLO_AGENTE.getValue());
 					
 					popolaOptionsConValoriSelezionati();
 					

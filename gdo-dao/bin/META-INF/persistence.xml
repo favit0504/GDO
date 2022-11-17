@@ -21,6 +21,7 @@
         <class>it.equitalia.gdo.dao.model.FiltroServizio</class>        
         <class>it.equitalia.gdo.dao.model.FiltroServizioAgente</class>
         <class>it.equitalia.gdo.dao.model.FiltroServizioEnte</class>
+        <class>it.equitalia.gdo.dao.model.FiltroServizioAltriUtenti</class>
         <class>it.equitalia.gdo.dao.model.ValoreFiltroServizio</class>
         <class>it.equitalia.gdo.dao.model.FiltroSocieta</class>
         <class>it.equitalia.gdo.dao.model.ValoreFiltroSocieta</class>        

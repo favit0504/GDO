@@ -20,6 +20,10 @@ body
 		{
 		background: transparent url(../img/bkg_agenti.jpg) right top no-repeat !important;
 		}
+	body.altriUtenti
+		{
+		background: transparent url(../img/bkg_altriUtenti.jpg) right top no-repeat !important;
+		}
 	body.amm
 		{
 		background: transparent url(../img/bkg_amm.jpg) right top no-repeat !important;

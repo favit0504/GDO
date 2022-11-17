@@ -58,6 +58,7 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 	protected static Map<Integer,String> opzioniRegione = new LinkedHashMap<Integer,String>();
 	protected static Map<String,String> opzioniServizioEnte = new LinkedHashMap<String,String>();
 	protected static Map<String,String> opzioniServizioAgente = new LinkedHashMap<String,String>();
+	protected static Map<String,String> opzioniServizioAltriUtenti = new LinkedHashMap<String,String>();
 	protected static Map<String,String> opzioniTipoEnte = new LinkedHashMap<String,String>();
 	protected static Map<Integer,String> opzioniAmbito = new LinkedHashMap<Integer,String>();
 	
@@ -76,6 +77,7 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 	
 	protected Map<String,String> opzioniScelteServizioAgente = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniScelteServizioEnte = new LinkedHashMap<String,String>();
+	protected Map<String,String> opzioniScelteServizioAltriUtenti = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniScelteTipoEnte = new LinkedHashMap<String,String>();
 	
 		
@@ -165,6 +167,14 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 		}
 		return opzioniServizioAgente;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String,String> getOpzioniServizioAltriUtenti() {
+		if(getSession().containsKey("opzioniServizioAltriUtenti")){
+			opzioniServizioAltriUtenti = (Map<String, String>) getSession().get("opzioniServizioAltriUtenti");
+		}
+		return opzioniServizioAltriUtenti;
+	}
 
 	@SuppressWarnings("unchecked")
 	public  Map<Integer, String> getOpzioniRaggruppamentoSocietario() {
@@ -207,7 +217,10 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 	public Map<String, String> getOpzioniScelteServizioAgente() {
 		return opzioniScelteServizioAgente;
 	}
-
+	
+	public Map<String, String> getOpzioniScelteServizioAltriUtenti() {
+		return opzioniScelteServizioAltriUtenti;
+	}
 	public Map<String, String> getOpzioniScelteServizioEnte() {
 		return opzioniScelteServizioEnte;
 	}
@@ -458,6 +471,18 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 				opzioniScelteRaggruppamentoSocietario = new LinkedHashMap<Integer, String>();
 				for (Entry<Integer, String> entry : sortedEntries) {
 					opzioniScelteRaggruppamentoSocietario.put(entry.getKey(), entry.getValue());
+				}
+			}
+			
+			if (news.getFiltroServizioAltriUtenti() != null) {
+				for (String campo : news.getFiltroServizioAltriUtenti().getValori())
+					opzioniScelteServizioAltriUtenti.put(campo, p.getMappaServiziAltriUtenti().get(campo));
+				
+				SortedSet<Map.Entry<String,String>> sortedEntries = StringUtils.entriesSortedByValues(opzioniScelteServizioAltriUtenti);
+				opzioniScelteServizioAltriUtenti = new LinkedHashMap<String, String>();
+				for (Entry<String, String> entry : sortedEntries) {
+					opzioniScelteServizioAltriUtenti.put(entry.getKey(), entry.getValue());
+	
 				}
 			}
 		

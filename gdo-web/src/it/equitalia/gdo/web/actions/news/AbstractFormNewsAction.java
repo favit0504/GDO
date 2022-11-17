@@ -501,14 +501,14 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 			}
 			
 			//TODO ST SERVIZI PER UTENTI ESTERNI
-			if (news.getFiltroServizioAltriUtenti() != null) {
-				for (String campo : news.getFiltroServizioAltriUtenti().getValori())
-					opzioniScelteServizioAltriUtenti.put(campo, p.getMappaServiziUtentiEsterni().get(campo));
+			if (news.getFiltroServizioUtentiEsterni() != null) {
+				for (String campo : news.getFiltroServizioUtentiEsterni().getValori())
+					opzioniServizioUtentiEsterni.put(campo, p.getMappaServiziUtentiEsterni().get(campo));
 				
-				SortedSet<Map.Entry<String,String>> sortedEntries = StringUtils.entriesSortedByValues(opzioniScelteServizioAltriUtenti);
-				opzioniScelteServizioAltriUtenti = new LinkedHashMap<String, String>();
+				SortedSet<Map.Entry<String,String>> sortedEntries = StringUtils.entriesSortedByValues(opzioniServizioUtentiEsterni);
+				opzioniServizioUtentiEsterni = new LinkedHashMap<String, String>();
 				for (Entry<String, String> entry : sortedEntries) {
-					opzioniScelteServizioAltriUtenti.put(entry.getKey(), entry.getValue());
+					opzioniServizioUtentiEsterni.put(entry.getKey(), entry.getValue());
 					
 				}
 			}

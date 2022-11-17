@@ -218,12 +218,7 @@ function mostraWarningVisualizzaPopUp(){
 			                       <div id="content_tab_visibilita_utentiEsterni_0"  class="content_tab_sottosteps first">
 				                         <s:doubleselect disabled="%{isModalitaVisualizza()}" list="opzioniServizioUtentiEsterni" name="servizio_utentiEsterni_options" id="servizio_utentiEsterni_options"
 				   						 doubleList="opzioniScelteServizioUtentiEsterni" doubleId="servizio_utentiEsterni_selected"
-				   						 doubleName="news.filtroServizioAltriUtenti.valori"></s:doubleselect>
-				   						 				   						 <%
-		/** 				   						 todo st modificare qui doublename 	
-		*/
-
-	%>	 
+				   						 doubleName="news.filtroServizioUtentiEsterni.valori"></s:doubleselect> 
 			                        </div>
 			                    </section>
 			
@@ -405,6 +400,10 @@ $(function () {
 			});
 			
 			$("#servizio_altriUtenti_selected > option").each(function() {
+			    this.setAttribute("selected","selected");
+			});		
+			
+			$("#servizio_utentiEsterni_selected > option").each(function() {
 			    this.setAttribute("selected","selected");
 			});		
 			

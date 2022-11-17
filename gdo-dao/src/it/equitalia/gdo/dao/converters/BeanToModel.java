@@ -19,6 +19,7 @@ import it.equitalia.gdo.commons.valueobjects.FiltroServizioAgenteBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioAltriUtentiBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioEnteBean;
+import it.equitalia.gdo.commons.valueobjects.FiltroServizioUtentiEsterniBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroSocietaBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroTipologiaEnteBean;
 import it.equitalia.gdo.commons.valueobjects.NewsBean;
@@ -39,6 +40,7 @@ import it.equitalia.gdo.dao.model.FiltroServizio;
 import it.equitalia.gdo.dao.model.FiltroServizioAgente;
 import it.equitalia.gdo.dao.model.FiltroServizioAltriUtenti;
 import it.equitalia.gdo.dao.model.FiltroServizioEnte;
+import it.equitalia.gdo.dao.model.FiltroServizioUtentiEsterni;
 import it.equitalia.gdo.dao.model.FiltroSocieta;
 import it.equitalia.gdo.dao.model.FiltroTipologiaEnte;
 import it.equitalia.gdo.dao.model.News;
@@ -116,6 +118,11 @@ public class BeanToModel {
 		
 		if (bean.getFiltroServizioAltriUtenti() != null) {
 			FiltroServizioAltriUtenti filtro = execute(bean.getFiltroServizioAltriUtenti());
+			list.add( filtro );
+		}
+		
+		if (bean.getFiltroServizioUtentiEsterni() != null) {
+			FiltroServizioUtentiEsterni filtro = execute(bean.getFiltroServizioUtentiEsterni());
 			list.add( filtro );
 		}
 		
@@ -403,6 +410,14 @@ public class BeanToModel {
 		FiltroServizioAltriUtenti fsa = new FiltroServizioAltriUtenti();
 		convertiFiltroServizio(fsa, bean);
 		fsa.setTipoFiltro(AbstractFiltro.TIPO_FILTRO.FiltroServizioAltriUtenti.name());
+		return fsa;		
+	}
+	
+	public static FiltroServizioUtentiEsterni execute(FiltroServizioUtentiEsterniBean bean)
+	{
+		FiltroServizioUtentiEsterni fsa = new FiltroServizioUtentiEsterni();
+		convertiFiltroServizio(fsa, bean);
+		fsa.setTipoFiltro(AbstractFiltro.TIPO_FILTRO.FiltroServizioUtentiEsterni.name());
 		return fsa;		
 	}
 	

@@ -340,6 +340,7 @@ public class PopolaFiltriNews {
 	public Map<String,String> getMappaServiziAltriUtenti() throws BusinessException {
 		
 		/* Campo gia` popolato? */
+
 		if (opzioniServizioAltriUtenti.size() > 0)
 		{
 			return  opzioniServizioAltriUtenti;	

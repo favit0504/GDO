@@ -10,6 +10,6 @@ public interface ServizioService {
 	List<ServizioBean> recuperaServiziEnte() throws BusinessException;
 	List<ServizioBean> recuperaServiziAgente() throws BusinessException;
 	List<ServizioBean> recuperaServiziAltriUtenti() throws BusinessException;
-	List<ServizioBean> recuperaServiziUtentiEsterni() throws BusinessException;
+	List<ServizioBean> recuperaServiziUtenteEsterno() throws BusinessException;
 
 }

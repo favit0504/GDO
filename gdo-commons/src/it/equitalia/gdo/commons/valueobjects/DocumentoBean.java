@@ -254,13 +254,16 @@ public class DocumentoBean extends BeanVersionabile implements Serializable, Bea
 		// TODO Stub di metodo generato automaticamente		
 	}
 
-	public FiltroServizioUtentiEsterniBean getFiltroServizioUtentiEsterni() {
+	@Override
+	public FiltroServizioUtenteEsternoBean getFiltroServizioUtenteEsterno() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void setFiltroServizioUtentiEsterni(FiltroServizioUtentiEsterniBean filtroServizio) {
-		// TODO Auto-generated method stub		
+	@Override
+	public void setFiltroServizioUtenteEsterno(FiltroServizioUtenteEsternoBean filtroServizio) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

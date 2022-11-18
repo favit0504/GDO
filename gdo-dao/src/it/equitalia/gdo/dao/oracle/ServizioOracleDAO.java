@@ -97,7 +97,7 @@ public class ServizioOracleDAO implements ServizioDAOInterface  {
 		return null;
 	}
 	
-	public List<Servizio> getListaServiziUtentiEsterni() {
+	public List<Servizio> getListaServiziUtenteEsterno() {
 		// TODO Stub di metodo generato automaticamente
 		return null;
 	}

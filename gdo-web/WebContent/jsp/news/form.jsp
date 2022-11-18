@@ -210,15 +210,15 @@ function mostraWarningVisualizzaPopUp(){
 
 			                     <h3 style="display:none;">Utenti esterni</h3>
 			                    <section style="display:none;">
-			                     	<div class="sottosteps utentiEsterni clearfix">
+			                     	<div class="sottosteps utenteEsterno clearfix">
 					                	<ul>
-						                	<li class="current"><a name="utentiEsterni"  id="tab_visibilita_utentiEsterni_0">Servizio</a></li>
+						                	<li class="current"><a name="utenteEsterno"  id="tab_visibilita_utenteEsterno_0">Servizio</a></li>
 					                    </ul>
 				                    </div>
-			                       <div id="content_tab_visibilita_utentiEsterni_0"  class="content_tab_sottosteps first">
-				                         <s:doubleselect disabled="%{isModalitaVisualizza()}" list="opzioniServizioUtentiEsterni" name="servizio_utentiEsterni_options" id="servizio_utentiEsterni_options"
-				   						 doubleList="opzioniScelteServizioUtentiEsterni" doubleId="servizio_utentiEsterni_selected"
-				   						 doubleName="news.filtroServizioUtentiEsterni.valori"></s:doubleselect> 
+			                       <div id="content_tab_visibilita_utenteEsterno_0"  class="content_tab_sottosteps first">
+				                         <s:doubleselect disabled="%{isModalitaVisualizza()}" list="opzioniServizioUtenteEsterno" name="servizio_utenteEsterno_options" id="servizio_utenteEsterno_options"
+				   						 doubleList="opzioniScelteServizioUtenteEsterno" doubleId="servizio_utenteEsterno_selected"
+				   						 doubleName="news.filtroServizioUtenteEsterno.valori"></s:doubleselect> 
 			                        </div>
 			                    </section>
 			
@@ -403,7 +403,7 @@ $(function () {
 			    this.setAttribute("selected","selected");
 			});		
 			
-			$("#servizio_utentiEsterni_selected > option").each(function() {
+			$("#servizio_utenteEsterno_selected > option").each(function() {
 			    this.setAttribute("selected","selected");
 			});		
 			

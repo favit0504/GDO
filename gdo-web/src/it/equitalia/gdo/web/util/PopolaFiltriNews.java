@@ -45,7 +45,7 @@ public class PopolaFiltriNews {
 	private static String OPZIONI_SERVIZIO_ENTE = "opzioniServizioEnte";
 	private static String OPZIONI_SERVIZIO_AGENTE = "opzioniServizioAgente";
 	private static String OPZIONI_SERVIZIO_ALTRI_UTENTI = "opzioniServizioAltriUtenti";
-	private static String OPZIONI_SERVIZIO_UTENTI_ESTERNI = "opzioniServizioUtentiEsterni";
+	private static String OPZIONI_SERVIZIO_UTENTE_ESTERNO = "opzioniServizioUtenteEsterno";
 	private static String OPZIONI_REGIONE = "opzioniRegione";
 	private static String OPZIONI_TIPO_ENTE = "opzioniTipoEnte";
 	private static String OPZIONI_RAGGRUPPAMENTO_SOCIETARIO = "opzioniRaggruppamentoSocietario";
@@ -58,7 +58,7 @@ public class PopolaFiltriNews {
 	protected Map<String,String> opzioniServizioEnte = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniServizioAgente = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniServizioAltriUtenti = new LinkedHashMap<String,String>();
-	protected Map<String,String> opzioniServizioUtentiEsterni = new LinkedHashMap<String,String>();
+	protected Map<String,String> opzioniServizioUtenteEsterno = new LinkedHashMap<String,String>();
 	protected Map<String,String> opzioniTipoEnte = new LinkedHashMap<String,String>();
 	protected Map<Integer,String> opzioniTipologiaUtente = new HashMap<Integer,String>();
 	protected Map<Integer,String> opzioniStato = new HashMap<Integer,String>();
@@ -104,8 +104,8 @@ public class PopolaFiltriNews {
 			popolaServizioAltriUtenti();
 		}
 		
-		if(!sessionMap.containsKey(OPZIONI_SERVIZIO_UTENTI_ESTERNI)) {
-			popolaServizioUtentiEsterni();
+		if(!sessionMap.containsKey(OPZIONI_SERVIZIO_UTENTE_ESTERNO)) {
+			popolaServizioUtenteEsterno();
 		}
 		
 		if(!sessionMap.containsKey(OPZIONI_REGIONE)) {
@@ -195,20 +195,20 @@ public class PopolaFiltriNews {
 		}
 	}
 	
-	private void popolaServizioUtentiEsterni() throws BusinessException {
+	private void popolaServizioUtenteEsterno() throws BusinessException {
 		
 		ServizioServiceBD servizioService = new ServizioServiceBD();
 		
-		List<ServizioBean> serviziAttivi = servizioService.recuperaServiziUtentiEsterni();
+		List<ServizioBean> serviziAttivi = servizioService.recuperaServiziUtenteEsterno();
 		
 		if(serviziAttivi != null && serviziAttivi.size() > 0){
 			for (ServizioBean serv : serviziAttivi) {
-				opzioniServizioUtentiEsterni.put(serv.getCodice(), serv.getCodice()+"  -  "+ serv.getDescrizione());
+				opzioniServizioUtenteEsterno.put(serv.getCodice(), serv.getCodice()+"  -  "+ serv.getDescrizione());
 				
 			}
 		}
-		if(opzioniServizioUtentiEsterni != null && opzioniServizioUtentiEsterni.size() > 0){
-			sessionMap.put(OPZIONI_SERVIZIO_UTENTI_ESTERNI, opzioniServizioUtentiEsterni);	
+		if(opzioniServizioUtenteEsterno != null && opzioniServizioUtenteEsterno.size() > 0){
+			sessionMap.put(OPZIONI_SERVIZIO_UTENTE_ESTERNO, opzioniServizioUtenteEsterno);	
 			
 		}
 	}
@@ -363,18 +363,18 @@ public class PopolaFiltriNews {
 	 * Metodo usato nella modifica news per prendere la mappa chiave/valore dei servizi utenti esterni
 	 */
 	@SuppressWarnings("unchecked")
-	public Map<String,String> getMappaServiziUtentiEsterni() throws BusinessException {
+	public Map<String,String> getMappaServiziUtenteEsterno() throws BusinessException {
 		
 		/* Campo gia` popolato? */
-		if (opzioniServizioUtentiEsterni.size() > 0)
+		if (opzioniServizioUtenteEsterno.size() > 0)
 		{
-			return  opzioniServizioUtentiEsterni;	
+			return  opzioniServizioUtenteEsterno;	
 		}
 		else 
 			/* Campo opzioniServizio inizializzato ma vuoto, vado a recuperarlo dalla sessione
 		   [ASSUNZIONE che sia stato gia` popolato in precedenza] */
 		{
-			Object oggettoInSessione = sessionMap.get(OPZIONI_SERVIZIO_UTENTI_ESTERNI);
+			Object oggettoInSessione = sessionMap.get(OPZIONI_SERVIZIO_UTENTE_ESTERNO);
 			
 			if (!(oggettoInSessione instanceof Map))
 				throw new BusinessException("Errore durante il recupero della lista dei servizi degli utenti esterni");

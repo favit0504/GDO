@@ -2,7 +2,7 @@ package it.equitalia.gdo.commons.valueobjects;
 
 import java.io.Serializable;
 
-public class FiltroServizioUtentiEsterniBean extends FiltroServizioBean implements Serializable {
+public class FiltroServizioUtenteEsternoBean extends FiltroServizioBean implements Serializable {
 
 	/**
 	 * 

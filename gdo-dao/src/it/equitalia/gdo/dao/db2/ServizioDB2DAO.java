@@ -49,7 +49,7 @@ public class ServizioDB2DAO implements ServizioDAOInterface {
 	}
 		
 	@SuppressWarnings("unchecked")
-	public List<Servizio> getListaServiziUtentiEsterni() {
+	public List<Servizio> getListaServiziUtenteEsterno() {
 		StringBuilder s = new StringBuilder(queryServizioUtenti);
 		s.append("WHERE s.C_SERVIZIO_NEW = '{?}' ");
 		s.append("ORDER BY s.C_SERVIZIO ");

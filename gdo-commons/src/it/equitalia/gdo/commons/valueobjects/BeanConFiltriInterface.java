@@ -32,9 +32,9 @@ public interface BeanConFiltriInterface {
 	
 	public void setFiltroServizioAltriUtenti(FiltroServizioAltriUtentiBean filtroServizio);
 	
-	public FiltroServizioUtentiEsterniBean getFiltroServizioUtentiEsterni();
+	public FiltroServizioUtenteEsternoBean getFiltroServizioUtenteEsterno();
 	
-	public void setFiltroServizioUtentiEsterni(FiltroServizioUtentiEsterniBean filtroServizio);
+	public void setFiltroServizioUtenteEsterno(FiltroServizioUtenteEsternoBean filtroServizio);
 	
 	public FiltroServizioAgenteBean getFiltroServizioAgente();
 	

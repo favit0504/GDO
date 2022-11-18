@@ -19,7 +19,7 @@ import it.equitalia.gdo.commons.valueobjects.FiltroServizioAgenteBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioAltriUtentiBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioEnteBean;
-import it.equitalia.gdo.commons.valueobjects.FiltroServizioUtentiEsterniBean;
+import it.equitalia.gdo.commons.valueobjects.FiltroServizioUtenteEsternoBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroSocietaBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroTipologiaEnteBean;
 import it.equitalia.gdo.commons.valueobjects.NewsBean;
@@ -40,7 +40,7 @@ import it.equitalia.gdo.dao.model.FiltroServizio;
 import it.equitalia.gdo.dao.model.FiltroServizioAgente;
 import it.equitalia.gdo.dao.model.FiltroServizioAltriUtenti;
 import it.equitalia.gdo.dao.model.FiltroServizioEnte;
-import it.equitalia.gdo.dao.model.FiltroServizioUtentiEsterni;
+import it.equitalia.gdo.dao.model.FiltroServizioUtenteEsterno;
 import it.equitalia.gdo.dao.model.FiltroSocieta;
 import it.equitalia.gdo.dao.model.FiltroTipologiaEnte;
 import it.equitalia.gdo.dao.model.News;
@@ -121,8 +121,8 @@ public class BeanToModel {
 			list.add( filtro );
 		}
 		
-		if (bean.getFiltroServizioUtentiEsterni() != null) {
-			FiltroServizioUtentiEsterni filtro = execute(bean.getFiltroServizioUtentiEsterni());
+		if (bean.getFiltroServizioUtenteEsterno() != null) {
+			FiltroServizioUtenteEsterno filtro = execute(bean.getFiltroServizioUtenteEsterno());
 			list.add( filtro );
 		}
 		
@@ -413,11 +413,11 @@ public class BeanToModel {
 		return fsa;		
 	}
 	
-	public static FiltroServizioUtentiEsterni execute(FiltroServizioUtentiEsterniBean bean)
+	public static FiltroServizioUtenteEsterno execute(FiltroServizioUtenteEsternoBean bean)
 	{
-		FiltroServizioUtentiEsterni fsa = new FiltroServizioUtentiEsterni();
+		FiltroServizioUtenteEsterno fsa = new FiltroServizioUtenteEsterno();
 		convertiFiltroServizio(fsa, bean);
-		fsa.setTipoFiltro(AbstractFiltro.TIPO_FILTRO.FiltroServizioUtentiEsterni.name());
+		fsa.setTipoFiltro(AbstractFiltro.TIPO_FILTRO.FiltroServizioUtenteEsterno.name());
 		return fsa;		
 	}
 	

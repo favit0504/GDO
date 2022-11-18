@@ -33,7 +33,7 @@ public class NewsBean extends BeanVersionabile implements Serializable, BeanConF
 	private FiltroServizioEnteBean filtroServizioEnte;
 	private FiltroServizioAgenteBean filtroServizioAgente;
 	private FiltroServizioAltriUtentiBean filtroServizioAltriUtenti;
-	private FiltroServizioUtentiEsterniBean filtroServizioUtentiEsterni;
+	private FiltroServizioUtenteEsternoBean filtroServizioUtenteEsterno;
 	private FiltroRegioneAgenteBean filtroRegioneAgente;
 	private FiltroRegioneEnteBean filtroRegioneEnte;	
 	private FiltroProvinciaEnteBean filtroProvinciaEnte;
@@ -246,12 +246,12 @@ public class NewsBean extends BeanVersionabile implements Serializable, BeanConF
 		this.visualizzaPopUpDescr = visualizzaPopUpDescr;
 	}
 
-	public FiltroServizioUtentiEsterniBean getFiltroServizioUtentiEsterni() {
-		return filtroServizioUtentiEsterni;
+	public FiltroServizioUtenteEsternoBean getFiltroServizioUtenteEsterno() {
+		return filtroServizioUtenteEsterno;
 
 	}
-	public void setFiltroServizioUtentiEsterni(FiltroServizioUtentiEsterniBean filtroServizio) {
-		this.filtroServizioUtentiEsterni = filtroServizio;
+	public void setFiltroServizioUtenteEsterno(FiltroServizioUtenteEsternoBean filtroServizio) {
+		this.filtroServizioUtenteEsterno = filtroServizio;
 	}
 	
 }

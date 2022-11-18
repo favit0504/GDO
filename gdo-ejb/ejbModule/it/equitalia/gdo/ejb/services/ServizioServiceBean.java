@@ -106,9 +106,9 @@ public class ServizioServiceBean extends ServiceWithDAOFactory<ServizioDAOInterf
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Interceptors({ProfilingInterceptor.class})
-	public List<ServizioBean> recuperaServiziUtentiEsterni() throws BusinessException {
+	public List<ServizioBean> recuperaServiziUtenteEsterno() throws BusinessException {
 		try{
-			List<Servizio> servizi = getDAO().getListaServiziUtentiEsterni();
+			List<Servizio> servizi = getDAO().getListaServiziUtenteEsterno();
 			List<ServizioBean> bean = new ArrayList<ServizioBean>();
 			popolaListaBean(servizi, bean);
 			return bean;
@@ -119,7 +119,7 @@ public class ServizioServiceBean extends ServiceWithDAOFactory<ServizioDAOInterf
 			throw new BusinessException(dae.getMessage());
 		} catch(Throwable t){
 			logger.error(t, t);
-			throw new BusinessException(GDOMessaggi.getMessaggio(GDOMessaggi.ERRORE_RECUPERA_SERVIZIO_UTENTI_ESTERNI), t);
+			throw new BusinessException(GDOMessaggi.getMessaggio(GDOMessaggi.ERRORE_RECUPERA_SERVIZIO_UTENTE_ESTERNO), t);
 		}
 		
 	}

@@ -113,7 +113,7 @@ public class GDOMessaggi {
 	public final static String ERRORE_RECUPERA_SERVIZIO_ENTE = "error.service.recupera.servizio.ente";
 	public final static String ERRORE_RECUPERA_SERVIZIO_AGENTE = "error.service.recupera.servizio.agente";
 	public final static String ERRORE_RECUPERA_SERVIZIO_ALTRI_UTENTI = "error.service.recupera.servizio.altriUtenti";
-	public static final String ERRORE_RECUPERA_SERVIZIO_UTENTI_ESTERNI = "error.service.recupera.servizio.utentiEsterni";
+	public static final String ERRORE_RECUPERA_SERVIZIO_UTENTE_ESTERNO = "error.service.recupera.servizio.utenteEsterno";
 
 	//ERRORI GESTIONE ENTI
 	public final static String ERRORE_RECUPERA_ENTE = "error.service.recupera.ente";

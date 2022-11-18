@@ -4,6 +4,6 @@ import javax.persistence.Entity;
 
 @SuppressWarnings("serial")
 @Entity
-public class FiltroServizioUtentiEsterni extends FiltroServizio{
+public class FiltroServizioUtenteEsterno extends FiltroServizio{
 
 }

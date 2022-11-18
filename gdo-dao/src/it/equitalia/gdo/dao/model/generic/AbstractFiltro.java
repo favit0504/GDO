@@ -28,7 +28,7 @@ private static final String SEQUENCE = "SEQ_ID_FILTRO";
 		FiltroServizioAgente, 
 		FiltroSocieta, 
 		FiltroServizioAltriUtenti,
-		FiltroServizioUtentiEsterni,
+		FiltroServizioUtenteEsterno,
 		//FiltroTipologia,
 		FiltroTipologiaEnte,
 		FiltroRegioneAgente, 

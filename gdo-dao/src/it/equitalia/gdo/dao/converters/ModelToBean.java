@@ -21,6 +21,7 @@ import it.equitalia.gdo.commons.valueobjects.FiltroServizioAgenteBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioAltriUtentiBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroServizioEnteBean;
+import it.equitalia.gdo.commons.valueobjects.FiltroServizioUtentiEsterniBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroSocietaBean;
 import it.equitalia.gdo.commons.valueobjects.FiltroTipologiaEnteBean;
 import it.equitalia.gdo.commons.valueobjects.NewsBean;
@@ -46,6 +47,7 @@ import it.equitalia.gdo.dao.model.FiltroServizio;
 import it.equitalia.gdo.dao.model.FiltroServizioAgente;
 import it.equitalia.gdo.dao.model.FiltroServizioAltriUtenti;
 import it.equitalia.gdo.dao.model.FiltroServizioEnte;
+import it.equitalia.gdo.dao.model.FiltroServizioUtentiEsterni;
 import it.equitalia.gdo.dao.model.FiltroSocieta;
 import it.equitalia.gdo.dao.model.FiltroTipologiaEnte;
 import it.equitalia.gdo.dao.model.News;
@@ -123,6 +125,11 @@ public class ModelToBean {
 				case FiltroServizioAltriUtenti:
 					FiltroServizioAltriUtentiBean filtroUtenti= execute((FiltroServizioAltriUtenti) filtroGenerico);
 					bean.setFiltroServizioAltriUtenti( filtroUtenti );
+					break;
+					
+				case FiltroServizioUtentiEsterni:
+					FiltroServizioUtentiEsterniBean filtroUtentiEsterni= execute((FiltroServizioUtentiEsterni) filtroGenerico);
+					bean.setFiltroServizioUtentiEsterni(filtroUtentiEsterni);
 					break;
 
 				case FiltroSocieta:
@@ -573,6 +580,12 @@ public class ModelToBean {
 	 
 	 public static FiltroServizioAltriUtentiBean execute(FiltroServizioAltriUtenti entita) {
 		 FiltroServizioAltriUtentiBean bean = new FiltroServizioAltriUtentiBean();
+		 convertiFiltroServizio(entita,bean);
+		 return bean;
+	 }
+	 
+	 public static FiltroServizioUtentiEsterniBean execute(FiltroServizioUtentiEsterni entita) {
+		 FiltroServizioUtentiEsterniBean bean = new FiltroServizioUtentiEsterniBean();
 		 convertiFiltroServizio(entita,bean);
 		 return bean;
 	 }

@@ -239,6 +239,14 @@ public class NewsOracleDAO extends EntitaVersionabileDAO<News> implements NewsDA
 						}													
 						break;
 						
+					case FiltroServizioUtentiEsterni:
+						List<ValoreFiltroServizio> listaValoriFiltro3 = ( (FiltroServizio) filtro ).getValoriFiltriServizio();					
+						for (ValoreFiltroServizio valoreServizio : ListUtils.emptyIfNull(listaValoriFiltro3) ) 
+						{
+							valoreServizio.setId( getIdValue(valoreServizio));	
+						}													
+						break;
+						
 					case FiltroSocieta:
 						List<ValoreFiltroSocieta> listaValoriFiltro2 = ( (FiltroSocieta) filtro ).getValoriFiltriSocieta();					
 						for (ValoreFiltroSocieta valoreSocieta : ListUtils.emptyIfNull(listaValoriFiltro2) ) 

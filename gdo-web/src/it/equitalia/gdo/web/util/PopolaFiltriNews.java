@@ -199,8 +199,7 @@ public class PopolaFiltriNews {
 		
 		ServizioServiceBD servizioService = new ServizioServiceBD();
 		
-		// todo st modificare qui il metodo da chiamare per popolare la lista
-		List<ServizioBean> serviziAttivi = servizioService.recuperaServiziAltriUtenti();
+		List<ServizioBean> serviziAttivi = servizioService.recuperaServiziUtentiEsterni();
 		
 		if(serviziAttivi != null && serviziAttivi.size() > 0){
 			for (ServizioBean serv : serviziAttivi) {

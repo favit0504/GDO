@@ -5,6 +5,7 @@ import it.equitalia.gdo.dao.model.Servizio;
 import it.equitalia.gdo.dao.services.interfaces.ServizioDAOInterface;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,9 +17,10 @@ public class ServizioDB2DAO implements ServizioDAOInterface {
 	private static final String PARAM_CODICE_SERVIZIO_NEW = "c_servizio_new";
 	private static final String ENTE = "E";
 	private static final String AGENTE = "A";
+	private static final String VARI = "V";
 	
 	private static final String whereServizioEnte = " where s.codiceServizioNew = :"+PARAM_CODICE_SERVIZIO_NEW;
-	private static final String queryServizioAltriUtenti = "SELECT s.C_SERVIZIO, s.T_SERVIZIO_NEW FROM WG0.WG0T1_SERVIZIO s WHERE s.c_servizio_new NOT IN ('A','E') ORDER BY s.C_SERVIZIO";
+	private static final String queryServizioUtenti = "SELECT s.C_SERVIZIO, s.T_SERVIZIO_NEW FROM WG0.WG0T1_SERVIZIO s ";
 	private EntityManager entityManager;
 	
 	
@@ -40,9 +42,19 @@ public class ServizioDB2DAO implements ServizioDAOInterface {
 	
 	@SuppressWarnings("unchecked")
 	public List<Servizio> getListaServiziAltriUtenti() {
-		Query q = entityManager.createNativeQuery(queryServizioAltriUtenti, Servizio.class);		
-		q.setParameter(1, ENTE);
-		q.setParameter(2, AGENTE);	
+		StringBuilder s = new StringBuilder(queryServizioUtenti);
+		s.append("ORDER BY s.C_SERVIZIO");
+		Query q = entityManager.createNativeQuery(s.toString(), Servizio.class);
+		return q.getResultList();
+	}
+		
+	@SuppressWarnings("unchecked")
+	public List<Servizio> getListaServiziUtentiEsterni() {
+		StringBuilder s = new StringBuilder(queryServizioUtenti);
+		s.append("WHERE s.C_SERVIZIO_NEW = '{?}' ");
+		s.append("ORDER BY s.C_SERVIZIO ");
+		
+		Query q = entityManager.createNativeQuery(s.toString().replace("{?}", VARI), Servizio.class);
 		return q.getResultList();
 	}
 
@@ -52,6 +64,8 @@ public class ServizioDB2DAO implements ServizioDAOInterface {
 		Query q = entityManager.createNativeQuery("select DISTINCT s.C_SERVIZIO from WG0.WG0T1_UTENTEFUNZ s where s.C_ID_UTENTE = '" + chiaveUtente+ "'");	
 		return q.getResultList();
 	}
+
+	
 	
 	public void delete(Serializable id) {
 		//operazione non prevista

@@ -113,6 +113,7 @@ public class GDOMessaggi {
 	public final static String ERRORE_RECUPERA_SERVIZIO_ENTE = "error.service.recupera.servizio.ente";
 	public final static String ERRORE_RECUPERA_SERVIZIO_AGENTE = "error.service.recupera.servizio.agente";
 	public final static String ERRORE_RECUPERA_SERVIZIO_ALTRI_UTENTI = "error.service.recupera.servizio.altriUtenti";
+	public static final String ERRORE_RECUPERA_SERVIZIO_UTENTI_ESTERNI = "error.service.recupera.servizio.utentiEsterni";
 
 	//ERRORI GESTIONE ENTI
 	public final static String ERRORE_RECUPERA_ENTE = "error.service.recupera.ente";
@@ -142,6 +143,7 @@ public class GDOMessaggi {
 	public final static String MANUALE_NOT_FOUND = "error.manuale.utente.not.found";
 	
 	public static final String TOOLTIP_TESTO_NEWS = "tooltip.news.testo";
+
 	
 	static {
 		

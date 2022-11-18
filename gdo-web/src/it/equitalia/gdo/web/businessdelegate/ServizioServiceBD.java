@@ -37,4 +37,8 @@ public final class ServizioServiceBD {
 		return service.recuperaServiziAltriUtenti();
 	}
 
+	public List<ServizioBean> recuperaServiziUtentiEsterni() throws BusinessException {
+		return service.recuperaServiziUtentiEsterni();
+	}
+
 }

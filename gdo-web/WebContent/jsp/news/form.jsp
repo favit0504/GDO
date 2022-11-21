@@ -194,7 +194,7 @@ function mostraWarningVisualizzaPopUp(){
 			                       
 			                   </section>
 			                   
-			                     <h3 style="display:none;">Utenti ITC</h3>
+			                     <h3 style="display:none;">Utenti ICT</h3>
 			                    <section style="display:none;">
 			                     	<div class="sottosteps altriUtenti clearfix">
 					                	<ul>

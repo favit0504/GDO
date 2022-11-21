@@ -69,6 +69,8 @@ public class VisualizzaNewsAction extends AbstractFormNewsAction implements Prep
 						tipologiaUtenteCheck.add(OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue());
 					if (news.getAltriUtenti())
 						tipologiaUtenteCheck.add(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getValue());
+					if (news.getUtenteEsterno())
+						tipologiaUtenteCheck.add(OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getValue());
 			
 					popolaOptionsConValoriSelezionati();
 					

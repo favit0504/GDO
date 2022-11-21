@@ -113,31 +113,43 @@ public class RicercaNewsAction extends AbstractNewsAction  implements Preparable
 				campiValorizzati = true;
 				news.setAgente(null);
 				news.setEnte(null);
+				news.setUtenteEsterno(null);
 				news.setAltriUtenti(null);
 			}
 			else if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()) ){
 				campiValorizzati = true;
 				news.setAgente(true);
 				news.setEnte(false);
+				news.setUtenteEsterno(false);
 				news.setAltriUtenti(false);
 			}
 			else if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue())){
 				campiValorizzati = true;
 				news.setAgente(false);
 				news.setEnte(true);
+				news.setUtenteEsterno(false);
 				news.setAltriUtenti(false);
 			}
 			else if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getValue()) && (!tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue()) && !tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()))){
 				campiValorizzati = true;
 				news.setAgente(false);
 				news.setEnte(false);
+				news.setUtenteEsterno(false);
 				news.setAltriUtenti(true);
+			}
+			else if(tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getValue()) && (!tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getValue()) && !tipologiaUtenteCheck.contains(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()))){
+				campiValorizzati = true;
+				news.setAgente(false);
+				news.setEnte(false);
+				news.setAltriUtenti(false);
+				news.setUtenteEsterno(true);
 			}
 		}
 		else {
 			news.setAgente(null);
 			news.setEnte(null);
 			news.setAltriUtenti(null);
+			news.setUtenteEsterno(null);
 		}
 
 
@@ -182,6 +194,8 @@ public class RicercaNewsAction extends AbstractNewsAction  implements Preparable
 				news.setEnte(true);			
 			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getValue()))
 				news.setAltriUtenti(true);		
+			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getValue()))
+				news.setUtenteEsterno(true);		
 		}
 	}
 }

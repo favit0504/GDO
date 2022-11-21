@@ -170,19 +170,20 @@ public class NewsServiceBean extends ServiceWithDAOFactory<NewsDAOInterface> imp
 				if(news.getDataFinePubblicazione() != null){
 					params.put(NewsDAOInterface.PARAM_DATA_FINE_PUBBLICAZIONE, news.getDataFinePubblicazione());	
 				}
-				if((news.getEnte() != null && news.getAgente() != null && news.getAltriUtenti() != null)){
-					if(!(news.getEnte() && news.getAgente() && news.getAltriUtenti())){
-						if(news.getEnte()){
-							params.put(NewsDAOInterface.PARAM_ENTE, news.getEnte());
-						}
-						if(news.getAgente()){
-							params.put(NewsDAOInterface.PARAM_AGENTE, news.getAgente());
-						}	
-						if(news.getAltriUtenti()){
-							params.put(NewsDAOInterface.PARAM_ALTRI_UTENTI, news.getAltriUtenti());
-						}
-					}
+				
+				if (news.getEnte() != null && news.getEnte()) {
+					params.put(NewsDAOInterface.PARAM_ENTE, news.getEnte());
 				}
+				if (news.getAgente() != null && news.getAgente()) {
+					params.put(NewsDAOInterface.PARAM_AGENTE, news.getAgente());
+				}
+				if (news.getAltriUtenti() != null && news.getAltriUtenti()) {
+					params.put(NewsDAOInterface.PARAM_ALTRI_UTENTI, news.getAltriUtenti());
+				}
+				if (news.getUtenteEsterno() != null && news.getUtenteEsterno()) {
+					params.put(NewsDAOInterface.PARAM_UTENTE_ESTERNO, news.getUtenteEsterno());
+				}
+				
 				if(news.getVisualizzaPopUp() != null)
 					params.put(NewsDAOInterface.PARAM_FLG_POP_UP, news.getVisualizzaPopUp());
 
@@ -395,7 +396,7 @@ public class NewsServiceBean extends ServiceWithDAOFactory<NewsDAOInterface> imp
 			List<NewsBean> newsSenzaAllegatoList = recuperaNewsPerSvecchiamentoSenzaAllegato();
 			for (NewsBean n: newsSenzaAllegatoList) {
 				newsDao.impostaComeSvecchiata(n.getId());
-				logger.info("La news senza allegato con id " + n.getId() + " è stata contrassegnata come svecchiata.");
+				logger.info("La news senza allegato con id " + n.getId() + " ï¿½ stata contrassegnata come svecchiata.");
 			}
 
 			return result;
@@ -450,7 +451,7 @@ public class NewsServiceBean extends ServiceWithDAOFactory<NewsDAOInterface> imp
 			sender.send(fileUploadContent, nomeFileUpload, correlationId, salta_coda);
 
 			result = true;
-			logger.info("La news con id " + newsBean.getId() + " e correlationId " + correlationId + " è stata svecchiata correttamente.");
+			logger.info("La news con id " + newsBean.getId() + " e correlationId " + correlationId + " ï¿½ stata svecchiata correttamente.");
 			
 		} catch (BusinessException be){
 			ctx.setRollbackOnly();
@@ -481,7 +482,7 @@ public class NewsServiceBean extends ServiceWithDAOFactory<NewsDAOInterface> imp
 			inoltro.inoltroFile(fileUploadContent, nomeFileUpload);
 			
 			result = true;
-			logger.info("La news con id " + newsBean.getId() + " è stata svecchiata correttamente.");
+			logger.info("La news con id " + newsBean.getId() + " ï¿½ stata svecchiata correttamente.");
 			
 			
 		} catch (GdoInoltroException gdo){

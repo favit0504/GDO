@@ -26,6 +26,7 @@ public class NewsBean extends BeanVersionabile implements Serializable, BeanConF
 	private Boolean svecchiata;		
 	private Boolean agente;
 	private Boolean altriUtenti;
+	private Boolean utenteEsterno;
 	private FiltroEnteBean filtroEnte;
 	private FiltroSocietaBean filtroSocieta;
 	private FiltroTipologiaEnteBean filtroTipologiaEnte;
@@ -54,6 +55,14 @@ public class NewsBean extends BeanVersionabile implements Serializable, BeanConF
 
 	public Boolean getAgente() {
 		return agente;
+	}
+	
+	public Boolean getUtenteEsterno() {
+		return utenteEsterno;
+	}
+
+	public void setUtenteEsterno(Boolean utenteEsterno) {
+		this.utenteEsterno = utenteEsterno;
 	}
 
 	public void setAgente(Boolean agente) {

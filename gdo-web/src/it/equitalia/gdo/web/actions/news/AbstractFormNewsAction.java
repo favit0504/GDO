@@ -500,7 +500,6 @@ public abstract class AbstractFormNewsAction extends AbstractNewsAction {
 				}
 			}
 			
-			//TODO ST SERVIZI PER UTENTI ESTERNI
 			if (news.getFiltroServizioUtenteEsterno() != null) {
 				for (String campo : news.getFiltroServizioUtenteEsterno().getValori())
 					opzioniScelteServizioUtenteEsterno.put(campo, p.getMappaServiziUtenteEsterno().get(campo));

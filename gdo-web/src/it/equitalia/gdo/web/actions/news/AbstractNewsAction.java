@@ -165,6 +165,7 @@ public abstract class AbstractNewsAction extends AbstractBaseAction {
 		news.setEnte(false);
 		news.setAgente(false);
 		news.setAltriUtenti(false);
+		news.setUtenteEsterno(false);
 		if(tipologiaUtenteCheck != null && tipologiaUtenteCheck.size() > 0){
 		
 			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue()))
@@ -173,6 +174,8 @@ public abstract class AbstractNewsAction extends AbstractBaseAction {
 					news.setEnte(true);	
 			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getValue()))
 				    news.setAltriUtenti(true);
+			if(tipologiaUtenteCheck.contains(OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getValue()))
+				news.setUtenteEsterno(true);
 		}
 	}
 

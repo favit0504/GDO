@@ -289,6 +289,7 @@ public class BeanToModel {
 		model.setEnte(newsBean.getEnte());
 		model.setAgente(newsBean.getAgente());
 		model.setAltriUtenti(newsBean.getAltriUtenti());
+		model.setUtenteEsterno(newsBean.getUtenteEsterno());
 		model.setTitolo(newsBean.getTitolo());
 		model.setTesto(newsBean.getTesto());
 		model.setStato(newsBean.getStato());

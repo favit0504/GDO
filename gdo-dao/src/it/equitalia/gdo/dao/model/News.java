@@ -51,6 +51,9 @@ public class News extends EntitaVersionabile implements Serializable, GenericTyp
 	@Column(name="ALTRI_UTENTI")
 	private Boolean altriUtenti;
 	
+	@Column(name="UTENTE_ESTERNO")
+	private Boolean utenteEsterno;
+
 	@Column(name="SVECCHIATA")
 	private Boolean svecchiata;
 	
@@ -176,5 +179,17 @@ public class News extends EntitaVersionabile implements Serializable, GenericTyp
 	public void setAltriUtenti(Boolean altriUtenti) {
 		this.altriUtenti = altriUtenti;
 	}
+
+
+	public Boolean getUtenteEsterno() {
+		return utenteEsterno;
+	}
+
+
+	public void setUtenteEsterno(Boolean utenteEsterno) {
+		this.utenteEsterno = utenteEsterno;
+	}
+
+
 	
 }

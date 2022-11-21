@@ -142,6 +142,8 @@ public class ModificaNewsAction extends AbstractFormNewsAction implements Prepar
 						tipologiaUtenteCheck.add(OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getValue());
 					if (news.getAltriUtenti())
 						tipologiaUtenteCheck.add(OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getValue());
+					if (news.getUtenteEsterno())
+						tipologiaUtenteCheck.add(OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getValue());
 					
 					popolaOptionsConValoriSelezionati();
 					

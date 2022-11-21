@@ -147,12 +147,14 @@ public class Costanti {
 	private final static int SOLO_ENTE_VAL =0;
 	private final static int SOLO_AGENTE_VAL =1;
 	private final static int SOLO_ALTRO_UTENTE_VAL =2;
+	private final static int SOLO_UTENTE_ESTERNO_VAL =3;
 	
 	public enum OPZIONI_TIPOLOGIA_UTENTE {
 		
 		SOLO_ENTE("Enti", SOLO_ENTE_VAL),		
 		SOLO_AGENTE("Agenti", SOLO_AGENTE_VAL),
-		SOLO_ALTRO_UTENTE("Altri utenti", SOLO_ALTRO_UTENTE_VAL);
+		SOLO_ALTRO_UTENTE("Altri utenti", SOLO_ALTRO_UTENTE_VAL),
+		SOLO_UTENTE_ESTERNO("Utenti esterni",SOLO_UTENTE_ESTERNO_VAL);
 
 
 		private final String descrizione;

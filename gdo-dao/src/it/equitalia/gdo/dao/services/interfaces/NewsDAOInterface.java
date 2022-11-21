@@ -30,6 +30,7 @@ public interface NewsDAOInterface extends GenericDAOInterface<News> {
 	public static final String PARAM_ENTE = "ENTE";
 	public static final String PARAM_AGENTE = "AGENTE";
 	public static final String PARAM_ALTRI_UTENTI = "ALTRI_UTENTI";
+	public static final String PARAM_UTENTE_ESTERNO = "UTENTE_ESTERNO";
 	public static final String PARAM_FLG_POP_UP = "FLG_POP_UP";
 	
 	public void setEntityManager(EntityManager entityManager);

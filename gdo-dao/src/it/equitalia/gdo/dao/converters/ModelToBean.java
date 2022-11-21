@@ -271,7 +271,7 @@ public class ModelToBean {
 		bean.setAltriUtenti(news.getAltriUtenti());
 		if(news.getAltriUtenti() != null && news.getAltriUtenti()){
 			if(bean.getDescrizioneTipoUtente() != null && bean.getDescrizioneTipoUtente() != ""){
-				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione()+ "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione() );	
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione()+ "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getDescrizione() );	
 			} else {
 				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione());
 			}
@@ -281,7 +281,7 @@ public class ModelToBean {
 		bean.setUtenteEsterno(news.getUtenteEsterno());
 		if(news.getUtenteEsterno() != null && news.getUtenteEsterno()){
 			if(bean.getDescrizioneTipoUtente() != null && bean.getDescrizioneTipoUtente() != ""){
-				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione()+ "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione() );	
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione()+ "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getDescrizione() );	
 			} else {
 				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getDescrizione());
 			}			

@@ -66,5 +66,22 @@ public interface NewsFrontendWebServiceDelegate {
         String arg0)
         throws BusinessException_Exception
     ;
+    
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns it.equitalia.gdo.webservices.client.ListaNews
+     * @throws BusinessException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "recuperaNewsAttivePerUtenteEsterno", targetNamespace = "http://webservices.gdo.equitalia.it/", className = "it.equitalia.gdo.webservices.client.RecuperaNewsAttivePerUtenteEsterno")
+    @ResponseWrapper(localName = "recuperaNewsAttivePerUtenteEsternoResponse", targetNamespace = "http://webservices.gdo.equitalia.it/", className = "it.equitalia.gdo.webservices.client.RecuperaNewsAttivePerUtenteEsternoResponse")
+    public ListaNews recuperaNewsAttivePerUtenteEsterno(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0)
+        throws BusinessException_Exception
+    ;
 
 }

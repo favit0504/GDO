@@ -13,6 +13,10 @@
   <xs:element name="recuperaNewsAttivePerAltriUtenti" type="tns:recuperaNewsAttivePerAltriUtenti"/>
 
   <xs:element name="recuperaNewsAttivePerAltriUtentiResponse" type="tns:recuperaNewsAttivePerAltriUtentiResponse"/>
+  
+  <xs:element name="recuperaNewsAttivePerUtenteEsterno" type="tns:recuperaNewsAttivePerUtenteEsterno"/>
+
+  <xs:element name="recuperaNewsAttivePerUtenteEsternoResponse" type="tns:recuperaNewsAttivePerUtenteEsternoResponse"/>
 
   <xs:complexType name="recuperaNewsAttiveDestinateAdUtenteAgente">
     <xs:sequence>
@@ -39,6 +43,7 @@
           <xs:element minOccurs="0" name="agente" type="xs:boolean"/>
           <xs:element minOccurs="0" name="allegato" type="tns:allegatoBean"/>
           <xs:element minOccurs="0" name="altriUtenti" type="xs:boolean"/>
+          <xs:element minOccurs="0" name="utenteEsterno" type="xs:boolean"/>
           <xs:element minOccurs="0" name="dataFinePubblicazione" type="xs:string"/>
           <xs:element minOccurs="0" name="dataInizioPubblicazione" type="xs:string"/>
           <xs:element minOccurs="0" name="descrizioneStato" type="xs:string"/>
@@ -51,6 +56,7 @@
           <xs:element minOccurs="0" name="filtroRegioneEnte" type="tns:filtroRegioneEnteBean"/>
           <xs:element minOccurs="0" name="filtroServizioAgente" type="tns:filtroServizioAgenteBean"/>
           <xs:element minOccurs="0" name="filtroServizioAltriUtenti" type="tns:filtroServizioAltriUtentiBean"/>
+          <xs:element minOccurs="0" name="filtroServizioUtenteEsterno" type="tns:filtroServizioUtenteEsternoBean"/>
           <xs:element minOccurs="0" name="filtroServizioEnte" type="tns:filtroServizioEnteBean"/>
           <xs:element minOccurs="0" name="filtroSocieta" type="tns:filtroSocietaBean"/>
           <xs:element minOccurs="0" name="filtroTipologiaEnte" type="tns:filtroTipologiaEnteBean"/>
@@ -185,6 +191,14 @@
     </xs:complexContent>
   </xs:complexType>
 
+  <xs:complexType name="filtroServizioUtenteEsternoBean">
+    <xs:complexContent>
+      <xs:extension base="tns:filtroServizioBean">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
   <xs:complexType name="filtroServizioEnteBean">
     <xs:complexContent>
       <xs:extension base="tns:filtroServizioBean">
@@ -226,6 +240,18 @@
   </xs:complexType>
 
   <xs:complexType name="recuperaNewsAttivePerAltriUtentiResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:listaNews"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="recuperaNewsAttivePerUtenteEsterno">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="recuperaNewsAttivePerUtenteEsternoResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:listaNews"/>
     </xs:sequence>

@@ -243,7 +243,6 @@ public class ModelToBean {
 	public static NewsBean execute(News news, boolean estraiFiltri, boolean recuperaContenutoAllegato){
 
 		NewsBean bean = new NewsBean();
-		StringBuilder descrizioneUtente= new StringBuilder();
 
 		convertiCampiVersionamento(news, bean);		
 
@@ -257,35 +256,37 @@ public class ModelToBean {
 		}
 		bean.setAgente(news.getAgente());
 		if(news.getAgente() != null && news.getAgente()){
-			descrizioneUtente.append(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione());
+			bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione());
 		}
 		
 		bean.setEnte(news.getEnte());
-		if (news.getEnte() != null && news.getEnte()) {
-			if (descrizioneUtente.length() > 0) {
-				descrizioneUtente.append("/");
+		if(news.getEnte() != null && news.getEnte()){
+			if(bean.getDescrizioneTipoUtente() != null && bean.getDescrizioneTipoUtente() != ""){
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione()+ "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione() );	
+			} else {
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione());
 			}
-			descrizioneUtente.append(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione());
 		}
 		
 		bean.setAltriUtenti(news.getAltriUtenti());
 		if(news.getAltriUtenti() != null && news.getAltriUtenti()){
-			if (descrizioneUtente.length() > 0) {
-				descrizioneUtente.append("/");
+			if(bean.getDescrizioneTipoUtente() != null && bean.getDescrizioneTipoUtente() != ""){
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione()+ "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getDescrizione() );	
+			} else {
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione());
 			}
-			descrizioneUtente.append(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione());				
+			
 		}
 		
 		bean.setUtenteEsterno(news.getUtenteEsterno());
-		if (news.getUtenteEsterno() != null && news.getUtenteEsterno()) {
-			if (descrizioneUtente.length() > 0) {
-				descrizioneUtente.append("/");
-			}
-			descrizioneUtente.append(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getDescrizione());
+		if(news.getUtenteEsterno() != null && news.getUtenteEsterno()){
+			if(bean.getDescrizioneTipoUtente() != null && bean.getDescrizioneTipoUtente() != ""){
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ENTE.getDescrizione()+ "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_AGENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_ALTRO_UTENTE.getDescrizione() + "/" + Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getDescrizione() );	
+			} else {
+				bean.setDescrizioneTipoUtente(Costanti.OPZIONI_TIPOLOGIA_UTENTE.SOLO_UTENTE_ESTERNO.getDescrizione());
+			}			
 		}
-		bean.setDescrizioneTipoUtente(descrizioneUtente.toString());
-		
-		
+
 		if(news.getDataInizioPubblicazione() != null)
 			bean.setDataInizioPubblicazione(DateUtils.fromDateToString(news.getDataInizioPubblicazione()));
 		if(news.getDataFinePubblicazione() != null)

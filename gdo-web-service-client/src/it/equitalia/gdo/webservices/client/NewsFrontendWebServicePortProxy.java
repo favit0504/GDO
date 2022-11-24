@@ -85,8 +85,4 @@ public class NewsFrontendWebServicePortProxy{
         return _getDescriptor().getProxy().recuperaNewsAttiveDestinateAdUtenteAgente(arg0);
     }
 
-    public ListaNews recuperaNewsAttivePerAltriUtenti(String arg0) throws BusinessException_Exception {
-        return _getDescriptor().getProxy().recuperaNewsAttivePerAltriUtenti(arg0);
-    }
-
 }

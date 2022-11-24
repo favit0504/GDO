@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://webservices.gdo.equitalia.it/" version="1.0" xmlns:tns="http://webservices.gdo.equitalia.it/">
+<?xml version="1.0" encoding="UTF-8"?><xs:schema targetNamespace="http://webservices.gdo.equitalia.it/" version="1.0" xmlns:tns="http://webservices.gdo.equitalia.it/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <xs:element name="BusinessException" type="tns:BusinessException"/>
 
@@ -10,17 +10,13 @@
 
   <xs:element name="recuperaNewsAttiveDestinateAdUtenteEnteResponse" type="tns:recuperaNewsAttiveDestinateAdUtenteEnteResponse"/>
 
-  <xs:element name="recuperaNewsAttivePerAltriUtenti" type="tns:recuperaNewsAttivePerAltriUtenti"/>
-
-  <xs:element name="recuperaNewsAttivePerAltriUtentiResponse" type="tns:recuperaNewsAttivePerAltriUtentiResponse"/>
-
-  <xs:complexType name="recuperaNewsAttiveDestinateAdUtenteAgente">
+  <xs:complexType name="recuperaNewsAttiveDestinateAdUtenteEnte">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="recuperaNewsAttiveDestinateAdUtenteAgenteResponse">
+  <xs:complexType name="recuperaNewsAttiveDestinateAdUtenteEnteResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:listaNews"/>
     </xs:sequence>
@@ -38,7 +34,6 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="agente" type="xs:boolean"/>
           <xs:element minOccurs="0" name="allegato" type="tns:allegatoBean"/>
-          <xs:element minOccurs="0" name="altriUtenti" type="xs:boolean"/>
           <xs:element minOccurs="0" name="dataFinePubblicazione" type="xs:string"/>
           <xs:element minOccurs="0" name="dataInizioPubblicazione" type="xs:string"/>
           <xs:element minOccurs="0" name="descrizioneStato" type="xs:string"/>
@@ -50,7 +45,6 @@
           <xs:element minOccurs="0" name="filtroRegioneAgente" type="tns:filtroRegioneAgenteBean"/>
           <xs:element minOccurs="0" name="filtroRegioneEnte" type="tns:filtroRegioneEnteBean"/>
           <xs:element minOccurs="0" name="filtroServizioAgente" type="tns:filtroServizioAgenteBean"/>
-          <xs:element minOccurs="0" name="filtroServizioAltriUtenti" type="tns:filtroServizioAltriUtentiBean"/>
           <xs:element minOccurs="0" name="filtroServizioEnte" type="tns:filtroServizioEnteBean"/>
           <xs:element minOccurs="0" name="filtroSocieta" type="tns:filtroSocietaBean"/>
           <xs:element minOccurs="0" name="filtroTipologiaEnte" type="tns:filtroTipologiaEnteBean"/>
@@ -58,8 +52,7 @@
           <xs:element minOccurs="0" name="svecchiata" type="xs:boolean"/>
           <xs:element minOccurs="0" name="testo" type="xs:string"/>
           <xs:element minOccurs="0" name="titolo" type="xs:string"/>
-          <xs:element minOccurs="0" name="visualizzaPopUp" type="xs:boolean"/>
-          <xs:element minOccurs="0" name="visualizzaPopUpDescr" type="xs:string"/>
+          <xs:element name="visualizzaPopUp" type="xs:boolean"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -177,14 +170,6 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="filtroServizioAltriUtentiBean">
-    <xs:complexContent>
-      <xs:extension base="tns:filtroServizioBean">
-        <xs:sequence/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
   <xs:complexType name="filtroServizioEnteBean">
     <xs:complexContent>
       <xs:extension base="tns:filtroServizioBean">
@@ -219,25 +204,13 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="recuperaNewsAttivePerAltriUtenti">
+  <xs:complexType name="recuperaNewsAttiveDestinateAdUtenteAgente">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="recuperaNewsAttivePerAltriUtentiResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:listaNews"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="recuperaNewsAttiveDestinateAdUtenteEnte">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="recuperaNewsAttiveDestinateAdUtenteEnteResponse">
+  <xs:complexType name="recuperaNewsAttiveDestinateAdUtenteAgenteResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:listaNews"/>
     </xs:sequence>

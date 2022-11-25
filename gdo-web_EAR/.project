@@ -3,9 +3,9 @@
 	<name>gdo-web_EAR</name>
 	<comment></comment>
 	<projects>
-		<project>gdo-web</project>
 		<project>gdo-commons</project>
 		<project>gdo-abilitazioni-web-services</project>
+		<project>gdo-web_WEB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

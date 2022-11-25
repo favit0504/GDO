@@ -4,10 +4,6 @@
         <dependent-module archiveName="gdo-dao.jar" deploy-path="/" handle="module:/resource/gdo-dao/gdo-dao">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="gdo-ejb.jar" deploy-path="/" handle="module:/resource/gdo-ejb/gdo-ejb">
-            <dependent-object>Module_1404823790776</dependent-object>
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="gdo-commons.jar" deploy-path="/" handle="module:/resource/gdo-commons/gdo-commons">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -25,6 +21,10 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="gdo-svecchiamento.jar" deploy-path="/" handle="module:/resource/gdo-svecchiamento/gdo-svecchiamento">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gdo-ejb_EJB.jar" deploy-path="/" handle="module:/resource/gdo-ejb_EJB/gdo-ejb_EJB">
+            <dependent-object>EjbModule_1669377915182</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

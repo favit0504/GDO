@@ -4,10 +4,10 @@
 	<comment></comment>
 	<projects>
 		<project>gdo-dao</project>
-		<project>gdo-ejb</project>
 		<project>gdo-commons</project>
 		<project>gdo-web-services</project>
 		<project>gdo-svecchiamento</project>
+		<project>gdo-ejb_EJB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

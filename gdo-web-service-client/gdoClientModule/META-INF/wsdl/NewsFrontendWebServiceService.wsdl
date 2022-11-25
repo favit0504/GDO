@@ -25,6 +25,12 @@
   <message name="recuperaNewsAttivePerAltriUtentiResponse">
     <part element="tns:recuperaNewsAttivePerAltriUtentiResponse" name="parameters"/>
   </message>
+  <message name="recuperaNewsAttivePerUtenteEsterno">
+    <part element="tns:recuperaNewsAttivePerUtenteEsterno" name="parameters"/>
+  </message>
+  <message name="recuperaNewsAttivePerUtenteEsternoResponse">
+    <part element="tns:recuperaNewsAttivePerUtenteEsternoResponse" name="parameters"/>
+  </message>
   <portType name="NewsFrontendWebServiceDelegate">
     <operation name="recuperaNewsAttiveDestinateAdUtenteEnte">
       <input message="tns:recuperaNewsAttiveDestinateAdUtenteEnte" wsam:Action="http://webservices.gdo.equitalia.it/NewsFrontendWebServiceDelegate/recuperaNewsAttiveDestinateAdUtenteEnteRequest"/>
@@ -40,6 +46,11 @@
       <input message="tns:recuperaNewsAttivePerAltriUtenti" wsam:Action="http://webservices.gdo.equitalia.it/NewsFrontendWebServiceDelegate/recuperaNewsAttivePerAltriUtentiRequest"/>
       <output message="tns:recuperaNewsAttivePerAltriUtentiResponse" wsam:Action="http://webservices.gdo.equitalia.it/NewsFrontendWebServiceDelegate/recuperaNewsAttivePerAltriUtentiResponse"/>
       <fault message="tns:BusinessException" name="BusinessException" wsam:Action="http://webservices.gdo.equitalia.it/NewsFrontendWebServiceDelegate/recuperaNewsAttivePerAltriUtenti/Fault/BusinessException"/>
+    </operation>
+    <operation name="recuperaNewsAttivePerUtenteEsterno">
+      <input message="tns:recuperaNewsAttivePerUtenteEsterno" wsam:Action="http://webservices.gdo.equitalia.it/NewsFrontendWebServiceDelegate/recuperaNewsAttivePerUtenteEsternoRequest"/>
+      <output message="tns:recuperaNewsAttivePerUtenteEsternoResponse" wsam:Action="http://webservices.gdo.equitalia.it/NewsFrontendWebServiceDelegate/recuperaNewsAttivePerUtenteEsternoResponse"/>
+      <fault message="tns:BusinessException" name="BusinessException" wsam:Action="http://webservices.gdo.equitalia.it/NewsFrontendWebServiceDelegate/recuperaNewsAttivePerUtenteEsterno/Fault/BusinessException"/>
     </operation>
   </portType>
   <binding name="NewsFrontendWebServicePortBinding" type="tns:NewsFrontendWebServiceDelegate">
@@ -69,6 +80,18 @@
       </fault>
     </operation>
     <operation name="recuperaNewsAttivePerAltriUtenti">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="BusinessException">
+        <soap:fault name="BusinessException" use="literal"/>
+      </fault>
+    </operation>
+    <operation name="recuperaNewsAttivePerUtenteEsterno">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>

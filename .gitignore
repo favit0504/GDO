@@ -1,6 +1,7 @@
-/GDO.iml
+*.iml
 /.idea/
 
 
 # Compiled class file
 *.class
+.gitignore

@@ -8,6 +8,7 @@
 		<project>gdo-commons</project>
 		<project>gdo-web-services</project>
 		<project>gdo-svecchiamento</project>
+		<project>gdo-ejb_EJB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

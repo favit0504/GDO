@@ -27,5 +27,9 @@
         <dependent-module archiveName="gdo-svecchiamento.jar" deploy-path="/" handle="module:/resource/gdo-svecchiamento/gdo-svecchiamento">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="gdo-ejb_EJB.jar" deploy-path="/" handle="module:/resource/gdo-ejb_EJB/gdo-ejb_EJB">
+            <dependent-object>EjbModule_1669391777696</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

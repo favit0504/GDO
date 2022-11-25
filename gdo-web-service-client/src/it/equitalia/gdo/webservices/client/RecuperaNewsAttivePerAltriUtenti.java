@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per recuperaNewsAttiveDestinateAdUtenteEnte complex type.
+ * <p>Classe Java per recuperaNewsAttivePerAltriUtenti complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="recuperaNewsAttiveDestinateAdUtenteEnte">
+ * &lt;complexType name="recuperaNewsAttivePerAltriUtenti">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -26,10 +26,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "recuperaNewsAttiveDestinateAdUtenteEnte", namespace = "http://webservices.gdo.equitalia.it/", propOrder = {
+@XmlType(name = "recuperaNewsAttivePerAltriUtenti", namespace = "http://webservices.gdo.equitalia.it/", propOrder = {
     "arg0"
 })
-public class RecuperaNewsAttiveDestinateAdUtenteEnte {
+public class RecuperaNewsAttivePerAltriUtenti {
 
     protected String arg0;
 

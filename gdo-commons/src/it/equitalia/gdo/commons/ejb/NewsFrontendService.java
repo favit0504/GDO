@@ -14,6 +14,7 @@ public interface NewsFrontendService {
 	List<NewsBean> recuperaNewsAttiveDestinateAdUtenteEnte(String chiaveUtente, TipologiaUtente tipologiaUtente) throws BusinessException;
 	List<NewsBean> recuperaNewsAttiveDestinateAdUtenteAgente(String chiaveUtente, TipologiaUtente tipologiaUtente) throws BusinessException;
 	List<NewsBean> recuperaNewsAttivePerAltriUtenti(String chiaveUtente,TipologiaUtente tipologiaUtente) throws BusinessException;
+	List<NewsBean> recuperaNewsAttivePerUtenteEsterno(String chiaveUtente, TipologiaUtente altriutenti)  throws BusinessException;
 	Boolean popolaEValutaUtente(UtenteBean utenteBean, NewsBean newsBean) throws BusinessException;
 
 }

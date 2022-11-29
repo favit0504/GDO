@@ -128,6 +128,34 @@ public class NewsFrontendServiceBean implements NewsFrontendServiceLocal, NewsFr
 		}
 		 return newsFiltrate;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.NEVER)
+	public List<NewsBean> recuperaNewsAttivePerUtenteEsterno(String chiaveUtente,
+			TipologiaUtente tipologiaUtente) throws BusinessException {
+		List<NewsBean> newsFiltrate = new LinkedList<NewsBean>();
+		
+		try {
+			List<NewsBean> newsValideEdAttivePerUtenza = newsService.recuperaNewsAttivePerUtente(tipologiaUtente);
+			
+			UtenteBean utenteBean = new UtenteBean();
+			utenteBean.setUsd(chiaveUtente);
+			utenteBean = popolamentoUtenteService.invocaPopolamentoUtente(utenteBean);
+			
+			Iterator<NewsBean> it = newsValideEdAttivePerUtenza.iterator();
+			
+			while (it.hasNext()) {
+				NewsBean newsBean = it.next();
+				if (valutazioneUtenteService.valutaUtente(utenteBean, newsBean)) {
+					rimuoviFiltri(newsBean);
+					newsFiltrate.add(newsBean);				
+				}
+			}
+		}
+		catch(Exception e) {
+			logger.error("Errore in fase di recupero delle news Agente per " + chiaveUtente, e);
+		}
+		return newsFiltrate;
+	}
 
 	public Boolean popolaEValutaUtente(UtenteBean utenteBean, NewsBean newsBean) throws BusinessException{
 		UtenteBean utente = popolamentoUtenteService.invocaPopolamentoUtente(utenteBean);
@@ -147,6 +175,7 @@ public class NewsFrontendServiceBean implements NewsFrontendServiceLocal, NewsFr
 		newsBean.setFiltroServizioAgente(null);
 		newsBean.setFiltroServizioEnte(null);
 		newsBean.setFiltroServizioAltriUtenti(null);
+		newsBean.setFiltroServizioUtenteEsterno(null);
 		newsBean.setFiltroSocieta(null);	
 	}
 

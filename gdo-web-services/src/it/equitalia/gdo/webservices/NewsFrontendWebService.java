@@ -41,7 +41,7 @@ public class NewsFrontendWebService {
 		}
 		catch(NamingException e) {
 			logger.error("Errore in fase di lookup dei servizi ",e);
-			throw new BusinessException("Si è verificato un errore interno");
+			throw new BusinessException("Si ï¿½ verificato un errore interno");
 		}
 		return listaNewsObject;
 
@@ -59,7 +59,7 @@ public class NewsFrontendWebService {
 		}
 		catch(NamingException e) {
 			logger.error("Errore in fase di lookup dei servizi ",e);
-			throw new BusinessException("Si è verificato un errore interno");
+			throw new BusinessException("Si ï¿½ verificato un errore interno");
 		}
 		return listaNewsObject;
 
@@ -77,11 +77,29 @@ public class NewsFrontendWebService {
 		}
 		catch(NamingException e) {
 			logger.error("Errore in fase di lookup dei servizi ",e);
-			throw new BusinessException("Si è verificato un errore interno");
+			throw new BusinessException("Si ï¿½ verificato un errore interno");
 		}
 		return listaNewsObject;
 
 	}
+	
+	public ListaNews recuperaNewsAttivePerUtenteEsterno(String chiaveUtente) throws BusinessException {
+		
+		ListaNews listaNewsObject = new ListaNews();
+		
+		try {
+			ctx = new InitialContext();
+			NewsFrontendServiceRemote newsService = getNewsFrontendServiceRemote();
+			List<NewsBean> newsRestituiteEJB = newsService.recuperaNewsAttivePerUtenteEsterno(chiaveUtente, TipologiaUtente.UTENTEESTERNO);			
+			listaNewsObject.setListaNews(newsRestituiteEJB);
+		}
+		catch(NamingException e) {
+			logger.error("Errore in fase di lookup dei servizi ",e);
+			throw new BusinessException("Si ï¿½ verificato un errore interno");
+		}
+		return listaNewsObject;
+	}
+	
 	private NewsFrontendServiceRemote getNewsFrontendServiceRemote() throws NamingException {
 			
 		String jndi_news = GDOConfig.getInstance().getProperty(GDOConfig.WS_CALL_EJB_JNDI_NEWS_FRONTEND);

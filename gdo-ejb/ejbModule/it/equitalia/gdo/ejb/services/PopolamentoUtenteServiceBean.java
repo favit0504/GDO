@@ -65,6 +65,7 @@ public class PopolamentoUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Interceptors({ProfilingInterceptor.class})
 	public UtenteBean invocaPopolamentoUtente(UtenteBean utente) throws BusinessException{
+		//todo st controllare meglio
 		try{
 			if(utente != null){
 				popolaTipologiaUtente(utente);
@@ -79,7 +80,9 @@ public class PopolamentoUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 					popolaTipologiaEnte(utente);					
 					popolaProvinceEnte(utente);
 					popolaRegioniEnte(utente);
-				}else if (utente.getTipologiaUtente()!=TipologiaUtente.ENTE && utente.getTipologiaUtente()!=TipologiaUtente.AGENTE  && utente.getTipologiaUtente()!=TipologiaUtente.EQUITALIA){				
+				} else if (utente.getTipologiaUtente() != TipologiaUtente.ENTE
+						&& utente.getTipologiaUtente() != TipologiaUtente.AGENTE
+						&& utente.getTipologiaUtente() != TipologiaUtente.EQUITALIA) {
 					
 					popolaServiziUtente(utente);					
 					
@@ -162,7 +165,9 @@ public class PopolamentoUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 			ServizioDAOInterface oracleDAO = new ServizioOracleDAO();	
 			ServizioDAOInterface DB2DAO = new ServizioDB2DAO();
     
-			if(!utente.getUsd().startsWith(Costanti.TipologiaUtente.AGENTE.getValue()) && !utente.getUsd().startsWith(Costanti.TipologiaUtente.EQUITALIA.getValue()) && !utente.getUsd().startsWith(Costanti.TipologiaUtente.ENTE.getValue())){								
+			if (!utente.getUsd().startsWith(Costanti.TipologiaUtente.AGENTE.getValue())
+					&& !utente.getUsd().startsWith(Costanti.TipologiaUtente.EQUITALIA.getValue())
+					&& !utente.getUsd().startsWith(Costanti.TipologiaUtente.ENTE.getValue())) {
 				factoryType = DAOFactoryType.DB2;
 				DB2DAO.setEntityManager(getEntityManager());
 				listaIdServizi =DB2DAO.getListaServiziAttiviAltriUtenti(utente.getUsd());

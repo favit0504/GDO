@@ -272,7 +272,11 @@ public class NewsServiceBean extends ServiceWithDAOFactory<NewsDAOInterface> imp
 				params.put(NewsDAOInterface.PARAM_ENTE, true);
 			} else if(tipologiaUtente.getValue().equals(TipologiaUtente.AGENTE.getValue())){
 				params.put(NewsDAOInterface.PARAM_AGENTE, true);
-			} else if(!tipologiaUtente.getValue().equals(TipologiaUtente.AGENTE.getValue()) && !tipologiaUtente.getValue().equals(TipologiaUtente.ENTE.getValue())){
+			} else if(tipologiaUtente.getValue().equals(TipologiaUtente.UTENTEESTERNO.getValue())){
+				params.put(NewsDAOInterface.PARAM_UTENTE_ESTERNO, true);
+			} else if (!tipologiaUtente.getValue().equals(TipologiaUtente.AGENTE.getValue())
+					&& !tipologiaUtente.getValue().equals(TipologiaUtente.ENTE.getValue())
+					&& !tipologiaUtente.getValue().equals(TipologiaUtente.UTENTEESTERNO.getValue())) {
 				params.put(NewsDAOInterface.PARAM_ALTRI_UTENTI, true);
 			}
 			NewsDAOInterface newsDao = getDAO();

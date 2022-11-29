@@ -22,6 +22,10 @@ public class NewsFrontendWebServiceDelegate{
     public ListaNews recuperaNewsAttivePerAltriUtenti (String chiaveUtente) throws BusinessException {
         return _newsFrontendWebService.recuperaNewsAttivePerAltriUtenti(chiaveUtente);
     }
+    
+    public ListaNews recuperaNewsAttivePerUtenteEsterno (String chiaveUtente) throws BusinessException {
+    	return _newsFrontendWebService.recuperaNewsAttivePerUtenteEsterno(chiaveUtente);
+    }
 
     public NewsFrontendWebServiceDelegate() {
         _newsFrontendWebService = new it.equitalia.gdo.webservices.NewsFrontendWebService(); }

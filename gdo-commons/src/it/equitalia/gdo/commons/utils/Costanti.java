@@ -12,12 +12,14 @@ public class Costanti {
 	private final static String AGENTE_VALORE = "C";
 	private final static String EQUITALIA_VALORE = "X";
 	private final static String ALTRIUTENTI_VALORE = "";
+	private final static String UTENTE_ESTERNO_VALORE = "UE";
 	
 	public enum TipologiaUtente {
 	    ENTE("Ente", ENTE_VALORE),
 	    AGENTE("Agente", AGENTE_VALORE),
 	    EQUITALIA("Equitalia", EQUITALIA_VALORE),
-	    ALTRIUTENTI("AltriUtenti", ALTRIUTENTI_VALORE);
+	    ALTRIUTENTI("AltriUtenti", ALTRIUTENTI_VALORE),
+		UTENTEESTERNO("UtenteEsterno", UTENTE_ESTERNO_VALORE);
 	    
 	    private final String descrizione;
 	    private final String valore;

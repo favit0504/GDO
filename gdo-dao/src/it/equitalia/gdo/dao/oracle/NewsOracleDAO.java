@@ -426,6 +426,9 @@ public class NewsOracleDAO extends EntitaVersionabileDAO<News> implements NewsDA
 		if(params.get(PARAM_ALTRI_UTENTI)!=null){
 			queryString+=" and n.altriUtenti = :" + PARAM_ALTRI_UTENTI + " ";
 		}
+		if(params.get(PARAM_UTENTE_ESTERNO)!=null){
+			queryString+=" and n.utenteEsterno = :" + PARAM_UTENTE_ESTERNO + " ";
+		}
 		
 		queryString+=" AND (n.dataInizioPubblicazione IS NULL OR current_date >= n.dataInizioPubblicazione )";
 				
@@ -443,6 +446,9 @@ public class NewsOracleDAO extends EntitaVersionabileDAO<News> implements NewsDA
 		}
 		if(params.get(PARAM_ALTRI_UTENTI)!=null){
 			q.setParameter(PARAM_ALTRI_UTENTI, params.get(PARAM_ALTRI_UTENTI));
+		}
+		if(params.get(PARAM_UTENTE_ESTERNO)!=null){
+			q.setParameter(PARAM_UTENTE_ESTERNO, params.get(PARAM_UTENTE_ESTERNO));
 		}
 		List<News> news= q.getResultList();
 		return news;

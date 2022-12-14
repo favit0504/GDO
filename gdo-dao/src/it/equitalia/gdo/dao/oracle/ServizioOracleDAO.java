@@ -101,6 +101,12 @@ public class ServizioOracleDAO implements ServizioDAOInterface  {
 		// TODO Stub di metodo generato automaticamente
 		return null;
 	}
+
+	@Override
+	public List<String> getListaServiziAttiviUtenteEsterno(String usd) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 

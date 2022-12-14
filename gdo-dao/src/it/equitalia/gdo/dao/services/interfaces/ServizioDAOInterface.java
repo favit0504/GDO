@@ -12,5 +12,6 @@ public interface ServizioDAOInterface extends GenericDAOInterface<Servizio> {
 	List<String> getListaServiziAttiviUtenteEnteoAgente(String chiaveUtente);
 	List<String> getListaServiziAttiviAltriUtenti(String chiaveUtente);
 	List<Servizio> getListaServiziUtenteEsterno();
+	List<String> getListaServiziAttiviUtenteEsterno(String usd);
 
 }

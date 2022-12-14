@@ -129,7 +129,10 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 		if (utente.getTipologiaUtente() == null)
 			throw new BusinessException("Utente non valido");	
 		
-		if(utente.getTipologiaUtente()!=TipologiaUtente.EQUITALIA && utente.getTipologiaUtente()!=TipologiaUtente.AGENTE && utente.getTipologiaUtente()!=TipologiaUtente.ENTE)
+		if (utente.getTipologiaUtente() != TipologiaUtente.EQUITALIA
+				&& utente.getTipologiaUtente() != TipologiaUtente.AGENTE
+				&& utente.getTipologiaUtente() != TipologiaUtente.ENTE
+				&& utente.getTipologiaUtente() != TipologiaUtente.UTENTEESTERNO)
 			return newsBean.getAltriUtenti();
 		else		
 				switch (utente.getTipologiaUtente()) {				
@@ -139,6 +142,8 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 						return newsBean.getEnte();
 					case AGENTE:
 						return newsBean.getAgente();
+					case UTENTEESTERNO:
+						return newsBean.getUtenteEsterno();
 					default:
 						throw new BusinessException("Utente non valido");
 		}
@@ -251,6 +256,8 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 				return utente.getServizi();	
 			case FiltroServizioAltriUtenti:
 				return utente.getServizi();	
+			case FiltroServizioUtenteEsterno:
+				return utente.getServizi();	
 			case FiltroTipologiaEnte:
 				List<String> tipologiaEnte = new ArrayList<String>();
 				tipologiaEnte.add(utente.getTipologiaEnte());
@@ -298,6 +305,10 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 			if(bean.getFiltroServizioAltriUtenti()!=null)
 				filtri = bean.getFiltroServizioAltriUtenti().getValori();
 			break;
+		case FiltroServizioUtenteEsterno:
+			if(bean.getFiltroServizioUtenteEsterno()!=null)
+				filtri = bean.getFiltroServizioUtenteEsterno().getValori();
+			break;
 		case FiltroTipologiaEnte:
 			if(bean.getFiltroTipologiaEnte()!=null)
 				filtri = bean.getFiltroTipologiaEnte().getValori();
@@ -319,7 +330,12 @@ public class ValutazioneUtenteServiceBean extends ServiceWithDAOFactory<GenericA
 			tipo = TIPO_FILTRO.FiltroServizioAgente;
 		}else if(utente.getTipologiaUtente()==TipologiaUtente.ENTE){
 			tipo = TIPO_FILTRO.FiltroServizioEnte;
-		}else if(utente.getTipologiaUtente()!=TipologiaUtente.EQUITALIA && utente.getTipologiaUtente()!=TipologiaUtente.AGENTE && utente.getTipologiaUtente()!=TipologiaUtente.ENTE) {
+		}else if(utente.getTipologiaUtente()==TipologiaUtente.UTENTEESTERNO){
+			tipo = TIPO_FILTRO.FiltroServizioUtenteEsterno;
+		} else if (utente.getTipologiaUtente() != TipologiaUtente.EQUITALIA
+				&& utente.getTipologiaUtente() != TipologiaUtente.AGENTE
+				&& utente.getTipologiaUtente() != TipologiaUtente.ENTE
+				&& utente.getTipologiaUtente() != TipologiaUtente.UTENTEESTERNO) {
 			tipo = TIPO_FILTRO.FiltroServizioAltriUtenti;
 		}
 		return valutaFiltroStringa(utente, newsBean, tipo);

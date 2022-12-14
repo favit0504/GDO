@@ -64,6 +64,12 @@ public class ServizioDB2DAO implements ServizioDAOInterface {
 		Query q = entityManager.createNativeQuery("select DISTINCT s.C_SERVIZIO from WG0.WG0T1_UTENTEFUNZ s where s.C_ID_UTENTE = '" + chiaveUtente+ "'");	
 		return q.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<String> getListaServiziAttiviUtenteEsterno(String chiaveUtente) {
+		Query q = entityManager.createNativeQuery("select DISTINCT s.C_SERVIZIO from WG0.WG0T1_UTENTEFUNZ s where s.C_ID_UTENTE = '" + chiaveUtente+ "'");	
+		return q.getResultList();
+	}
 
 	
 	

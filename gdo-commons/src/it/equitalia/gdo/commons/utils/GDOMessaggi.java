@@ -115,6 +115,9 @@ public class GDOMessaggi {
 	public final static String ERRORE_RECUPERA_SERVIZIO_ALTRI_UTENTI = "error.service.recupera.servizio.altriUtenti";
 	public static final String ERRORE_RECUPERA_SERVIZIO_UTENTE_ESTERNO = "error.service.recupera.servizio.utenteEsterno";
 
+
+
+
 	//ERRORI GESTIONE ENTI
 	public final static String ERRORE_RECUPERA_ENTE = "error.service.recupera.ente";
 

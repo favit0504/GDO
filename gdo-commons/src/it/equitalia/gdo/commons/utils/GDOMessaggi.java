@@ -120,8 +120,6 @@ public class GDOMessaggi {
 
 
 
-
-
 	//ERRORI GESTIONE ENTI
 	public final static String ERRORE_RECUPERA_ENTE = "error.service.recupera.ente";
 
